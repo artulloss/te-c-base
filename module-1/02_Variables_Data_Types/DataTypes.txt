@@ -1,0 +1,18 @@
+DATA TYPES
+C#		Range
+bool	true or false
+byte	0 to 255
+char	U+0000 to U+FFFF ('a', 'b', etc.)
+int		-2^31 to 2^31
+float	-3.4×10^38 to 3.4×10^38
+double	±5.0 × 10^−324 to ±1.7 × 10^308
+long	-2^63 to 2^63
+decimal	(-7.9×10^28 to 7.9×1028) / (10^0 to 10^28)
+
+ARITHMETIC OPERATORS
+Op	Description							Example
++	Adds two operands					15 + 2 = 17
+-	Subtracts two operands				15 - 2 = 13
+*	Multiplies two operands				15 * 2 = 30
+/	Divides two operands				15 / 2 = 7
+%	Finds the remainder after division	15 % 2 = 1
