@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.PortableExecutable;
 
 namespace Variables_And_Datatypes
 {
@@ -191,7 +192,17 @@ namespace Variables_And_Datatypes
             */
             doneWithExercises = true;
 
-            
+            //magic numbers
+            int numSeconds = 24 * 60 * 60;
+
+            int numHoursInDay = 24;
+            int numMinutesInHour = 60;
+            int numSecondsInMinute = 60;
+
+            int numSecondsInADay = numHoursInDay * numMinutesInHour * numSecondsInMinute; 
+
+
+
         }
     }
 }
