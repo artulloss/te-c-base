@@ -33,39 +33,76 @@ namespace VariableNaming
             many raccoons are left in the woods?
             */
 
+            int numOfRaccoons = 3;
+            int numRaccoonsLeft = 2;
+            int raccoonsRemaining = numOfRaccoons - numRaccoonsLeft;
+
             /*
             4. There are 5 flowers and 3 bees. How many less bees than flowers?
             */
+
+            int numberOfFlowers = 5;
+            int numberOfBees = 3;
+            int differenceFlowersBees = numberOfFlowers - numberOfBees;
 
             /*
             5. 1 lonely pigeon was eating breadcrumbs. Another pigeon came to eat
             breadcrumbs, too. How many pigeons are eating breadcrumbs now?
             */
 
+            int originalPigeons = 1;
+            int newPigeons = 1;
+            int currentPigeons = originalPigeons + newPigeons;
+
             /*
             6. 3 owls were sitting on the fence. 2 more owls joined them. How many
             owls are on the fence now?
             */
+
+            int originalOwls = 3;
+            int newOwls = 2;
+            int currentOwls = originalOwls + newOwls;
 
             /*
             7. 2 beavers were working on their home. 1 went for a swim. How many
             beavers are still working on their home?
             */
 
+            int originalBeavers = 2;
+            int beaversThatLeft = 1;
+            int currentBeavers = originalBeavers - beaversThatLeft;
+
             /*
             8. 2 toucans are sitting on a tree limb. 1 more toucan joins them. How
             many toucans in all?
             */
+
+            int originalToucans = 2;
+            int newToucans = 1;
+            int currentToucans = originalToucans + newToucans;
 
             /*
             9. There are 4 squirrels in a tree with 2 nuts. How many more squirrels
             are there than nuts?
             */
 
+            int numberOfSquirrels = 4;
+            int numberOfNuts = 2;
+            int differenceBetweenNutsSquirrels = numberOfSquirrels - numberOfNuts;
+
             /*
             10. Mrs. Hilt found a quarter, 1 dime, and 2 nickels. How much money did
             she find?
             */
+
+            int numberOfQuarters = 1;
+            int numberOfDimes = 1;
+            int numberOfNickels = 2;
+            int quarterWorth = 25;
+            int dimeWorth = 10;
+            int nickelWorth = 5;
+
+            int cents = numberOfQuarters * quarterWorth + numberOfDimes * dimeWorth + numberOfNickels * nickelWorth;
 
             /*
             11. Mrs. Hilt's favorite first grade classes are baking muffins. Mrs. Brier's
@@ -74,10 +111,19 @@ namespace VariableNaming
             grade bake in all?
             */
 
+            int muffinCountAdams = 20;
+            int muffinCountFlannery = 17;
+            int muffinSum = muffinCountAdams + muffinCountFlannery;
+
             /*
             12. Mrs. Hilt bought a yoyo for 24 cents and a whistle for 14 cents. How
             much did she spend in all for the two toys?
             */
+
+            decimal yoyo = 0.24m;
+            decimal whistle = 0.14m;
+
+            decimal sum = yoyo + whistle;
 
             /*
             13. Mrs. Hilt made 5 Rice Krispie Treats. She used 8 large marshmallows
@@ -85,45 +131,83 @@ namespace VariableNaming
             altogether?
             */
 
+
+            int miniMarshmallowCount = 10;
+            int bigMarshmallowCount = 8;
+            int totalMarshmallows = miniMarshmallowCount + bigMarshmallowCount;
+
             /*
             14. At Mrs. Hilt's house, there was 29 inches of snow, and Brecknock
             Elementary School received 17 inches of snow. How much more snow
             did Mrs. Hilt's house have?
             */
 
+            int hiltSnowInches = 29;
+            int brecknockSnowInches = 17;
+            int differenceInSnow = hiltSnowInches - brecknockSnowInches;
+
             /*
             15. Mrs. Hilt has $10. She spends $3 on a toy truck and $2 on a pencil
             case. How much money does she have left?
             */
+
+            int hiltMoney = 10;
+            int truckPrice = 3;
+            int pencilPrice = 2;
+            hiltMoney -= 3 + 2;
 
             /*
             16. Josh had 16 marbles in his collection. He lost 7 marbles. How many
             marbles does he have now?
             */
 
+            int joshMarbles = 16;
+            int joshMarblesLost = 7;
+            int joshFinalMarbles = joshMarbles - joshMarblesLost;
+
             /*
             17. Megan has 19 seashells. How many more seashells does she need to
             find to have 25 seashells in her collection?
             */
+
+            int meganSeashells = 19;
+            int meganWantsThisManyShells = 25;
+            int meganNeedsThisManyShells = meganWantsThisManyShells - meganSeashells;
 
             /*
             18. Brad has 17 balloons. 8 balloons are red and the rest are green. How
             many green balloons does Brad have?
             */
 
+            int bradBalloons = 17;
+            int redBalloons = 8;
+            int greenBalloons = bradBalloons - redBalloons;
+
             /*
             19. There are 38 books on the shelf. Marta put 10 more books on the shelf.
             How many books are on the shelf now?
             */
 
+            int booksOnShelf = 38;
+            int booksAdded = 10;
+            int currentBooksOnShelf = booksOnShelf + booksAdded;
+
             /*
             20. A bee has 6 legs. How many legs do 8 bees have?
             */
+
+            int beeLegs = 6;
+            int beeCount = 8;
+            int eightBeesHaveLegs = beeLegs * beeCount;
 
             /*
             21. Mrs. Hilt bought an ice cream cone for 99 cents. How much would 2 ice
             cream cones cost?
             */
+
+            decimal iceCreamCone = 0.99m;
+            int numberOfCones = 2;
+            decimal costOfIceCream = iceCreamCone * numberOfCones;
 
             /*
             22. Mrs. Hilt wants to make a border around her garden. She needs 125
@@ -131,15 +215,27 @@ namespace VariableNaming
             does she need to complete the border?
             */
 
+            int rocksTotal = 125;
+            int currentRocks = 64;
+            int rocksNeeded = rocksTotal - currentRocks;
+
             /*
             23. Mrs. Hilt had 38 marbles. She lost 15 of them. How many marbles does
             she have left?
             */
 
+            int oldMarbleCount = 38;
+            int marblesLost = 15;
+            int marblesRemaining = oldMarbleCount - marblesLost;
+
             /*
             24. Mrs. Hilt and her sister drove to a concert 78 miles away. They drove 32
             miles and then stopped for gas. How many miles did they have left to drive?
             */
+
+            int concertDistance = 78;
+            int droveDistance = 32;
+            int remainingDistance = concertDistance - droveDistance;
 
             /*
             25. Mrs. Hilt spent 1 hour and 30 minutes shoveling snow on Saturday
@@ -147,15 +243,27 @@ namespace VariableNaming
             much total time did she spend shoveling snow?
             */
 
+            int minutesShovelingSnowMorning = 90;
+            int minutesShovelingSnowAfternoon = 45;
+            int totalMinutesShovelingSnow = minutesShovelingSnowMorning + minutesShovelingSnowAfternoon;
+
             /*
             26. Mrs. Hilt bought 6 hot dogs. Each hot dog cost 50 cents. How much
             money did she pay for all of the hot dogs?
             */
 
+            decimal hotdogPrice = 0.5m;
+            int hotdogCount = 6;
+            decimal costOfHotdogs = hotdogPrice * hotdogCount;
+
             /*
             27. Mrs. Hilt has 50 cents. A pencil costs 7 cents. How many pencils can
             she buy with the money she has?
             */
+            
+            hiltMoney = 50;
+            pencilPrice = 7;
+            int pencilsSheCanBuy = hiltMoney / pencilPrice;
 
             /*
             28. Mrs. Hilt saw 33 butterflies. Some of the butterflies were red and others
@@ -163,60 +271,108 @@ namespace VariableNaming
             were red?
             */
 
+            int butterflyCount = 33;
+            int orangeButterflies = 20;
+            int redButterflies = butterflyCount - orangeButterflies;
+
             /*
             29. Kate gave the clerk $1.00. Her candy cost 54 cents. How much change
             should Kate get back?
             */
+
+            decimal kateMoneyGiven = 1m;
+            decimal candyPrice = 0.54m;
+            decimal kateChange = kateMoneyGiven - candyPrice;
 
             /*
             30. Mark has 13 trees in his backyard. If he plants 12 more, how many trees
             will he have?
             */
 
+            int markTrees = 13;
+            int markTreesAdded = 12;
+            int markFinalTrees = markTrees + markTreesAdded;
+
             /*
             31. Joy will see her grandma in two days. How many hours until she sees
             her?
             */
+
+            int numberOfDays = 2;
+            int hoursInDay = 24;
+            int hoursToSeeGrandma = numberOfDays * hoursInDay;
 
             /*
             32. Kim has 4 cousins. She wants to give each one 5 pieces of gum. How
             much gum will she need?
             */
 
+            int kimCousins = 4;
+            int piecesOfGumForEach = 5;
+            int pieceOfGumNeeded = kimCousins * piecesOfGumForEach;
+
             /*
             33. Dan has $3.00. He bought a candy bar for $1.00. How much money is
             left?
             */
+
+            decimal danMoney = 3m;
+            decimal candyBarPrice = 1m;
+            decimal danRemainingMoney = danMoney - candyBarPrice;
 
             /*
             34. 5 boats are in the lake. Each boat has 3 people. How many people are
             on boats in the lake?
             */
 
+            int boatsOnLake = 5;
+            int peoplePerBoat = 3;
+            int peopleOnBoatsInLake = boatsOnLake * peoplePerBoat;
+
             /*
             35. Ellen had 380 legos, but she lost 57 of them. How many legos does she
             have now?
             */
+
+            int ellenLegosOriginal = 380;
+            int ellenLegosLost = 57;
+            int ellenLegos = ellenLegosOriginal - ellenLegosLost;
 
             /*
             36. Arthur baked 35 muffins. How many more muffins does Arthur have to
             bake to have 83 muffins?
             */
 
+            int arthurMuffins = 35;
+            int arthurTotalMuffins = 83;
+            int arthurNeedsMuffins = arthurTotalMuffins - arthurMuffins;
+
             /*
             37. Willy has 1400 crayons. Lucy has 290 crayons. How many more
             crayons does Willy have then Lucy?
             */
+
+            int willyCrayonCount = 1400;
+            int lucyCrayonCount = 290;
+            int differenceInCrayons = willyCrayonCount - lucyCrayonCount;
 
             /*
             38. There are 10 stickers on a page. If you have 22 pages of stickers, how
             many stickers do you have?
             */
 
+            int stickersPerPage = 10;
+            int pagesOfStickers = 22;
+            int totalStickers = stickersPerPage * pagesOfStickers;
+
             /*
             39. There are 96 cupcakes for 8 children to share. How much will each
             person get if they share the cupcakes equally?
             */
+
+            int cupcakeCount = 96;
+            int childrenCount = 8;
+            int cupcakesPerChild = 96 / 8;
 
             /*
             40. She made 47 gingerbread cookies which she will distribute equally in
@@ -224,11 +380,19 @@ namespace VariableNaming
             cookies will not be placed in a jar?
             */
 
+            int gingerbreadCookieCount = 47;
+            int cookiesPerJar = 6;
+            int cookiesNotPlacedInJars = gingerbreadCookieCount % cookiesPerJar;
+
             /*
             41. She also prepared 59 croissants which she plans to give to her 8
             neighbors. If each neighbor received and equal number of croissants,
             how many will be left with Marian?
             */
+
+            int croissantCount = 59;
+            int neighborCount = 8;
+            int marianKeepsCroissants = croissantCount % 8;
 
             /*
             42. Marian also baked oatmeal cookies for her classmates. If she can
@@ -236,11 +400,19 @@ namespace VariableNaming
             prepare 276 oatmeal cookies at a time?
             */
 
+            int oatmealCookiesCount = 276;
+            int cookiesPerTray = 12;
+            int traysNeeded = oatmealCookiesCount / cookiesPerTray;
+
             /*
             43. Marian’s friends were coming over that afternoon so she made 480
             bite-sized pretzels. If one serving is equal to 12 pretzels, how many
             servings of bite-sized pretzels was Marian able to prepare?
             */
+
+            int pretzelCount = 480;
+            int pretzelsPerServing = 12;
+            int servingsPrepared = pretzelCount / pretzelsPerServing;
 
             /*
             44. Lastly, she baked 53 lemon cupcakes for the children living in the city
@@ -248,11 +420,20 @@ namespace VariableNaming
             boxes with 3 lemon cupcakes each were given away?
             */
 
+            int lemonCupcakeCount = 53;
+            int cupcakesLeftAtHome = 2;
+            int lemonCupcakesPerBox = 3;
+            int boxesOfLemonCupcakesGivenAway = (lemonCupcakeCount - cupcakesLeftAtHome) / lemonCupcakesPerBox;
+
             /*
             45. Susie's mom prepared 74 carrot sticks for breakfast. If the carrots
             were served equally to 12 people, how many carrot sticks were left
             uneaten?
             */
+
+            int carrotStickCount = 74;
+            int peopleEatingCarrots = 12;
+            int carrotSticksLeftUneaten = carrotStickCount % peopleEatingCarrots;
 
             /*
             46. Susie and her sister gathered all 98 of their teddy bears and placed
@@ -260,11 +441,19 @@ namespace VariableNaming
             maximum of 7 teddy bears, how many shelves will be filled?
             */
 
+            int teddyBearCount = 98;
+            int teddyBearsPerShelf = 7;
+            int filledShelves = teddyBearCount / teddyBearsPerShelf;
+
             /*
             47. Susie’s mother collected all family pictures and wanted to place all of
             them in an album. If an album can contain 20 pictures, how many
             albums will she need if there are 480 pictures?
             */
+
+            int picturesPerAlbum = 20;
+            int totalPictures = 480;
+            int albumsNeeded = totalPictures / picturesPerAlbum;
 
             /*
             48. Joe, Susie’s brother, collected all 94 trading cards scattered in his
@@ -273,16 +462,29 @@ namespace VariableNaming
             the unfilled box?
             */
 
+            int joeTradingCards = 98;
+            int cardsPerBox = 8;
+            int boxesFilled = joeTradingCards / cardsPerBox;
+            int unfilledBoxCards = joeTradingCards % cardsPerBox;
+
             /*
             49. Susie’s father repaired the bookshelves in the reading room. If he has
             210 books to be distributed equally on the 10 shelves he repaired,
             how many books will each shelf contain?
             */
 
+            int books = 210;
+            int shelveCount = 10;
+            int booksPerShelf = books / shelveCount;
+
             /*
             50. Cristina baked 17 croissants. If she planned to serve this equally to
             her seven guests, how many will each have?
             */
+
+            int christinaCroissants = 17;
+            int guestCount = 7;
+            double croissantsPerGuest = (double) christinaCroissants / guestCount;
 
             /*
                 CHALLENGE PROBLEMS
@@ -295,6 +497,19 @@ namespace VariableNaming
             Challenge: How many days will it take the pair to paint 623 rooms assuming they work 8 hours a day?.
             */
 
+            const int AREA = 168;
+            int rooms = 5;
+            const double BILL_SPEED = 2.15;
+            const double JILL_SPEED = 1.9;
+            const double BILL_HOURLY_RATE = AREA / BILL_SPEED;
+            const double JILL_HOURLY_RATE = AREA / JILL_SPEED;
+            double timeToDoFiveRooms = rooms * AREA / (BILL_HOURLY_RATE + JILL_HOURLY_RATE);
+            Console.WriteLine(timeToDoFiveRooms);
+            rooms = 623;
+            const int HOURS_A_DAY = 8;
+            int days = (int) ((rooms * AREA) / (BILL_HOURLY_RATE + JILL_HOURLY_RATE)) / HOURS_A_DAY;
+            Console.WriteLine("It will take: " + days + " days to paint.");
+
             /*
             Create and assign variables to hold your first name, last name, and middle initial. Using concatenation,
             build an additional variable to hold your full name in the order of last name, first name, middle initial. The
@@ -303,6 +518,12 @@ namespace VariableNaming
             Example: "Hopper, Grace B."
             */
 
+            string firstName = "Adam";
+            string lastName = "Tulloss";
+            string middleInitial = "R";
+            string fullName = lastName + ", " + firstName + " " + middleInitial + ".";
+            Console.WriteLine("My full name is: " + fullName);
+
             /*
             The distance between New York and Chicago is 800 miles, and the train has already travelled 537 miles.
             What percentage of the trip has been completed?
@@ -310,6 +531,10 @@ namespace VariableNaming
             Challenge: Display as an integer value between 0 and 100 using casts.
             */
 
+            int distance = 800;
+            int progress = 537;
+            double percentage = (double) progress / distance;
+            Console.WriteLine("The integer between 0 and 100 is: " + percentage * 100 + ".");
         }
     }
 }
