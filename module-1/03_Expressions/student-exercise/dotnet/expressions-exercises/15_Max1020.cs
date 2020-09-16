@@ -17,7 +17,15 @@ namespace Exercises
       */
         public int Max1020(int a, int b)
         {
-            return 0;
+            if (!InRange(a, 10, 20))
+                a = -1;
+            if (!InRange(b, 10, 20))
+                b = -1;
+
+            if (a == -1 && b == -1)
+                return 0;
+
+            return Math.Max(a, b);
         }
 
     }

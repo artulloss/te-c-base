@@ -16,7 +16,7 @@ namespace Exercises
         */
         public int IntMax(int a, int b, int c)
         {
-            return 0;
+            return Math.Max((Math.Max(a, b)), c);
         }
 
     }

@@ -18,7 +18,10 @@ namespace Exercises
          */
         public int SortaSum(int a, int b)
         {
-            return 0;
+            int sum = a + b;
+            if (InRange(sum, 10, 19))
+                return 20;
+            return sum;
         }
 
     }

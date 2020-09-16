@@ -18,7 +18,10 @@ namespace Exercises
         */
         public bool SquirrelPlay(int temp, bool isSummer)
         {
-            return false;
+            bool playing = InRange(temp, 60, 90);
+            if (isSummer)
+                playing = InRange(temp, 60, 100);
+            return playing;
         }
 
     }

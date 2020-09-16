@@ -20,7 +20,19 @@ namespace Exercises
          */
         public string AlarmClock(int day, bool vacation)
         {
-            return "";
+            switch (day)
+            {
+                case 1: // Week, Mon
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    return vacation ? "10:00" : "7:00";
+                case 6: // Sat
+                case 0: // Sun
+                    return vacation ? "off" : "10:00";
+            }
+            throw new Exception("Invalid day of the week!");
         }
 
     }

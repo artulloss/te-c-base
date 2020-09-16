@@ -18,7 +18,8 @@ namespace Exercises
          */
         public bool NearTen(int num)
         {
-            return false;
+            int mod = num % 10;
+            return mod == 0 || mod == 1 || mod == 2 || mod == 8 || mod == 9;
         }
     }
 }

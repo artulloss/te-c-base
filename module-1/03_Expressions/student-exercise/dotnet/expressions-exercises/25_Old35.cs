@@ -17,7 +17,7 @@ namespace Exercises
          */
         public bool Old35(int n)
         {
-            return false;
+            return n % 5 == 0 ^ n % 3 == 0;
         }
 
     }

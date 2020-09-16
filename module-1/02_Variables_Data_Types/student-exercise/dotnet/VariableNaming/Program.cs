@@ -504,11 +504,11 @@ namespace VariableNaming
             const double BILL_HOURLY_RATE = AREA / BILL_SPEED;
             const double JILL_HOURLY_RATE = AREA / JILL_SPEED;
             double timeToDoFiveRooms = rooms * AREA / (BILL_HOURLY_RATE + JILL_HOURLY_RATE);
-            Console.WriteLine(timeToDoFiveRooms);
+            Console.WriteLine("It will take " + timeToDoFiveRooms + " days to paint 5 rooms");
             rooms = 623;
             const int HOURS_A_DAY = 8;
             int days = (int) ((rooms * AREA) / (BILL_HOURLY_RATE + JILL_HOURLY_RATE)) / HOURS_A_DAY;
-            Console.WriteLine("It will take: " + days + " days to paint.");
+            Console.WriteLine("It will take " + days + " days to paint 623 rooms.");
 
             /*
             Create and assign variables to hold your first name, last name, and middle initial. Using concatenation,
@@ -533,7 +533,7 @@ namespace VariableNaming
 
             int distance = 800;
             int progress = 537;
-            double percentage = (double) progress / distance;
+            float percentage = (float) progress / distance;
             Console.WriteLine("The integer between 0 and 100 is: " + percentage * 100 + ".");
         }
     }

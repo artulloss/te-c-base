@@ -19,7 +19,7 @@ namespace Exercises
          */
         public int TeenSum(int a, int b)
         {
-            return 0;
+            return InRange(a, 13, 19) || InRange(b, 13, 19) ? 19 : a + b;
         }
     }
 }

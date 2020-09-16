@@ -17,6 +17,12 @@ namespace Exercises
         */
         public bool HasTeen(int a, int b, int c)
         {
+            int[] numbers = {a, b, c};
+            foreach (int number in numbers)
+            {
+                if (number >= 13 && number <= 19)
+                    return true;
+            }
             return false;
         }
 

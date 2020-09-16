@@ -17,7 +17,8 @@ namespace Exercises
          */
         public int Diff21(int n)
         {
-            return 0;
+            int difference = Math.Abs(n - 21);
+            return n > 21 ? difference * 2 : difference;
         }
     }
 }

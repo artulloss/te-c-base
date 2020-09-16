@@ -18,7 +18,7 @@ namespace Exercises
          */
         public bool SpecialEleven(int n)
         {
-            return false;
+            return n % 11 == 0 || n % 11 == 1;
         }
 
     }

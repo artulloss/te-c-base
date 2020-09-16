@@ -20,7 +20,26 @@ namespace Exercises
          */
         public int LuckySum(int a, int b, int c)
         {
-            return 0;
+            int sum = 0;
+            int[] numbers = {a, b, c};
+            bool skip = false;
+            foreach (int number in numbers)
+            {
+                if (number == 13)
+                {
+                    skip = true;
+                    continue;
+                }
+
+                if (skip)
+                {
+                    skip = false;
+                    continue;
+                }
+
+                sum += number;
+            }
+            return sum;
         }
     }
 }

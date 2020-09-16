@@ -19,6 +19,10 @@ namespace Exercises
          */
         public bool CigarParty(int cigars, bool isWeekend)
         {
+            if (InRange(cigars, 40, 60))
+                return true;
+            if (isWeekend && cigars >= 40)
+                return true;
             return false;
         }
 

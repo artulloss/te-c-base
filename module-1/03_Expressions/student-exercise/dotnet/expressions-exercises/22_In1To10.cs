@@ -17,7 +17,11 @@ namespace Exercises
          */
         public bool In1To10(int n, bool outsideMode)
         {
-            return false;
+            return outsideMode ? OutsideRange(n, 1, 10) : InRange(n, 1, 10);
+        }
+        bool OutsideRange(int number, int min, int max)
+        {
+            return number <= min || number >= max;
         }
 
     }

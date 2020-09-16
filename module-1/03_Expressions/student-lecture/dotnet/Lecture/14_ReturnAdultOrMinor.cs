@@ -17,14 +17,9 @@ namespace Lecture
         */
         public string ReturnAdultOrMinor(int number)
         {
-            if (true)
-            {
-                return "Adult";
-            }
-            else
-            {
-                return "Minor";
-            }
+            if (number >= 18)
+                return "Adult"; 
+            return "Minor";
         }
     }
 }

@@ -16,9 +16,9 @@ namespace Lecture
         */
         public bool ReturnTrueWhenOneEqualsOne()
         {
-            if (1 == 1)
+            if (1 == 1) // Really I could just do return 1 == 1 for the whole function but apparently it's supposed to use an if statement
             {
-                return false;
+                return 1 == 1;
             }
 
             return false;
