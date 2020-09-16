@@ -1,0 +1,9 @@
+A	B	A||B	A&&B	A^B
+T	T	T		T		F
+
+T	F	T		F		T
+
+F	T	T		F		T
+
+F	F	F		F		F
+
