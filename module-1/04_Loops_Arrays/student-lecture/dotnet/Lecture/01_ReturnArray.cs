@@ -14,10 +14,10 @@ namespace Lecture
             Create an array and return it.
 
             TOPIC: Array Creation
-        */
+        */ 
         public int[] ReturnNewArray()
         {
-            return null;
+            return new[] {1, 2, 3};
         }
 
 
@@ -29,7 +29,7 @@ namespace Lecture
         */
         public int[] ReturnArrayOfKnownSize()
         {
-            return null;
+            return new int[100];
         }
 
         /*
@@ -40,7 +40,7 @@ namespace Lecture
         */
         public string[] ReturnArrayOfUnknownSize(int n)
         {
-            return null;
+            return new string[n];
         }
 
         

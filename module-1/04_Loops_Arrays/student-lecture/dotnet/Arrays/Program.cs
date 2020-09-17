@@ -8,14 +8,14 @@ namespace Arrays
         {
        
             //1. Creating an array of integers
-            int[] quizScores = new int[4];
+            var quizScores = new int[4];
             quizScores[0] = 100;
             quizScores[1] = 80;
             quizScores[2] = 85;
             quizScores[3] = 90;
 
             //2. Creating an array of strings
-            string[] names = new string[4] { "Josh", "David", "Craig", "Casey" };
+            string[] names = new string[5] { "Josh", "David", "Craig", "Casey", null};
 
             //3. Create an array of characters that hold "Tech Elevator"        
             char[] letters = { 'T', 'e', 'c', 'h', ' ', 'E', 'l', 'e', 'v', 'a', 't', 'o', 'r' };

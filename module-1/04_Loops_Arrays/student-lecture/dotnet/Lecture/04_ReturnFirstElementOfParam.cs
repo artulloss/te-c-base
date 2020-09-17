@@ -15,7 +15,7 @@ namespace Lecture
         */
         public int ReturnFirstElementOfParam(int[] passedInArray)
         {
-            return 1;
+            return passedInArray[0];
         }
 
         /*
@@ -24,7 +24,7 @@ namespace Lecture
         */
         public void SetFirstElement(int[] passedInArray)
         {            
-            return;
+            passedInArray[0] = 100;
         }
     }
 }
