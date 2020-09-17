@@ -16,8 +16,11 @@ namespace Exercises
          */
         public bool Sum28(int[] nums)
         {
-            return false;
+            int sumOfTwos = 0;
+            foreach (var num in nums)
+                if (num == 2)
+                    sumOfTwos += num;
+            return sumOfTwos == 8;
         }
-
     }
 }

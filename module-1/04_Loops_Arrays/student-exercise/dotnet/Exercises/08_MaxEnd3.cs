@@ -17,8 +17,10 @@ namespace Exercises
          */
         public int[] MaxEnd3(int[] nums)
         {
-            return new int[] { };
+            int largerNumber = Math.Max(nums[0], nums[nums.Length - 1]);
+            for (int i = 0; i < nums.Length; i++)
+                nums[i] = largerNumber;
+            return nums;
         }
-
     }
 }

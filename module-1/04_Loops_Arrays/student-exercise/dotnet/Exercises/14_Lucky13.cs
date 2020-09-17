@@ -16,8 +16,10 @@ namespace Exercises
          */
         public bool Lucky13(int[] nums)
         {
-            return false;
+            foreach (var num in nums)
+                if (num == 1 || num == 3)
+                    return false;
+            return true;
         }
-
     }
 }

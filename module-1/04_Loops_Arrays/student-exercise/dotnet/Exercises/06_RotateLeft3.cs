@@ -17,7 +17,10 @@ namespace Exercises
          */
         public int[] RotateLeft3(int[] nums)
         {
-            return new int[] { };
+            int first = nums.First(); // or nums[0]
+            Array.Copy(nums, 1, nums, 0, nums.Length - 1);
+            nums[nums.Length - 1] = first;
+            return nums;
         }
 
     }

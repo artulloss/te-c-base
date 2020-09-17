@@ -17,7 +17,7 @@ namespace Exercises
          */
         public int Sum2(int[] nums)
         {
-            return 0;
+            return nums.Length < 2 ? nums.Sum() : nums[0] + nums[1];
         }
 
     }

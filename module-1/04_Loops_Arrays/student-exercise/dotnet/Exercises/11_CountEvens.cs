@@ -17,7 +17,11 @@ namespace Exercises
          */
         public int CountEvens(int[] nums)
         {
-            return 0;
+            int evenNums = 0;
+            foreach (int num in nums)
+                if (num % 2 == 0)
+                    evenNums++;
+            return evenNums;
         }
 
     }

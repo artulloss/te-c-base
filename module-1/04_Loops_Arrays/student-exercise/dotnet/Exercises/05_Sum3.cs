@@ -16,7 +16,7 @@ namespace Exercises
          */
         public int Sum3(int[] nums)
         {
-            return 0;
+            return nums.Sum();
         }
 
     }

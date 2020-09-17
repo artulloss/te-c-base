@@ -16,8 +16,14 @@ namespace Exercises
          */
         public bool Has22(int[] nums)
         {
+            int previous = 0;
+            foreach (var num in nums)
+            {
+                if (num == previous && num == 2)
+                    return true;
+                previous = num;
+            }
             return false;
         }
-
     }
 }

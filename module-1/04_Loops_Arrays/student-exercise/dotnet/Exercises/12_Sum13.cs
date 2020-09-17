@@ -18,7 +18,15 @@ namespace Exercises
          */
         public int Sum13(int[] nums)
         {
-            return 0;
+            int sum = 0;
+            foreach (var num in nums)
+            {
+                if (num == 13)
+                    break;
+                sum += num;
+            }
+
+            return sum;
         }
 
     }
