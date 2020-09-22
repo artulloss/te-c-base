@@ -24,8 +24,19 @@ namespace DecimalToBinary
                     Main(args);
                     return;
                 } 
-                Console.WriteLine(number + " in binary is " + Convert.ToString(number, 2));
+                //Console.WriteLine(number + " in binary is " + Convert.ToString(number, 2)); // Lazy way
+                Console.WriteLine(number + " in binary is " + ConvertIntToBinary(number));
             }
+        }
+        static string ConvertIntToBinary(int number)
+        {
+            string output = "";
+            while (number > 0)
+            {
+                output += number % 2 == 0 ? 1 : 0;
+                number /= 2;
+            }
+            return output;
         }
     }
 }

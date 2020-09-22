@@ -16,7 +16,8 @@ namespace Exercises
          */
         public bool DoubleX(string str)
         {
-            return false;
+            int firstX = str.IndexOf("x", StringComparison.CurrentCulture);
+            return firstX >= 0 && firstX != str.Length - 1 && str[firstX + 1] == 'x';
         }
     }
 }

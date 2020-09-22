@@ -17,7 +17,7 @@ namespace Exercises
         */
         public string TheEnd(string str, bool front)
         {
-            return null;
+            return front ? str.First().ToString() : str.Last().ToString();
         }
     }
 }

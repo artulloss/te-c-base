@@ -17,7 +17,13 @@ namespace Exercises
          */
         public string FrontTimes(string str, int n)
         {
-            return null;
+            string repeatingStr = str.Length > 3 ? str.Substring(0, 3) : str;
+            StringBuilder stringBuilder = new StringBuilder(repeatingStr.Length);
+            for (int i = 0; i < n; i++)
+            {
+                stringBuilder.Append(repeatingStr);
+            }
+            return stringBuilder.ToString();
         }
 
     }

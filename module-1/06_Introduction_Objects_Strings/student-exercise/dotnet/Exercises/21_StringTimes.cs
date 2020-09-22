@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,10 @@ namespace Exercises
          */
         public string StringTimes(string str, int n)
         {
-            return null;
+            StringBuilder stringBuilder = new StringBuilder(str.Length * n); // This will use less memory because we don't have to create a new string every time
+            for(int i = 0; i < n; i++)
+                stringBuilder.Append(str);
+            return stringBuilder.ToString();
         }
     }
 }

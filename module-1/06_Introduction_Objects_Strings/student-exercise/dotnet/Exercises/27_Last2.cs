@@ -17,7 +17,16 @@ namespace Exercises
          */
         public int Last2(string str)
         {
-            return 0;
+            if (str.Length < 2)
+                return 0;
+            int count = 0;
+            char lastLetter = str[str.Length - 1];
+            char secondToLastLetter = str[str.Length - 2];
+            for (int i = 0; i < str.Length - 2; i++)
+                if (str[i] == secondToLastLetter && str[i + 1] == lastLetter)
+                    count++;
+            return count;
         }
     }
 }
+

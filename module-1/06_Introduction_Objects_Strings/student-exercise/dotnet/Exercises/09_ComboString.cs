@@ -18,7 +18,7 @@ namespace Exercises
         */
         public string ComboString(string a, string b)
         {
-            return null;
+            return  a.Length < b.Length ? a + b + a : b + a + b;
         }
     }
 }

@@ -16,7 +16,15 @@ namespace Exercises
          */
         public string StringBits(string str)
         {
-            return null;
+            // [0] 1 [2] 3 [4] 5 Length (6 + 1) / 2 = 3
+            // [0] 1 [2] 3 [4] Length (5 + 1) / 2 = 3
+            StringBuilder stringBuilder = new StringBuilder((str.Length + 1) / 2);
+            for (int i = 0; i < str.Length; i++)
+            {
+                if(i % 2 == 0) 
+                    stringBuilder.Append(str[i]);
+            }
+            return stringBuilder.ToString();
         }
     }
 }

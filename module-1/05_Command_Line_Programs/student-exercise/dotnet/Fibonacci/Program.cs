@@ -22,13 +22,11 @@ namespace Fibonacci
             Console.Write("\n");
             int sum = 0;
             int lastSum = 0;
-            int secondToLastSum = 0;
+            int secondToLastSum = 1;
             while (sum < number)
             {
                 Console.Write(sum + " ");
                 sum = lastSum + secondToLastSum;
-                if (sum == 0)
-                    sum++;
                 secondToLastSum = lastSum;
                 lastSum = sum;
             }

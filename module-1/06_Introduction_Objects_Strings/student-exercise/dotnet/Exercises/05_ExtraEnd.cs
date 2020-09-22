@@ -17,7 +17,10 @@ namespace Exercises
          */
         public string ExtraEnd(string str)
         {
-            return null;
+            string result = "";
+            for (int i = 0; i < 3; i++)
+                result += str[str.Length - 2] + str[str.Length - 1];
+            return result;
         }
     }
 }

@@ -16,7 +16,15 @@ namespace Exercises
          */
         public int CountXX(string str)
         {
-            return 0;
+            char previous = Convert.ToChar(0x0);
+            int count = 0;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (previous == 'x' && str[i] == previous)
+                    count++;
+                previous = str[i];
+            }
+            return count;
         }
     }
 }
