@@ -16,7 +16,13 @@ namespace Exercises
           */
         public List<int> OddOnly(int[] integerArray)
         {
-            return null;
+            List<int> returnList = new List<int>();
+            foreach (int integer in integerArray)
+            {
+                if(integer % 2 == 1)
+                    returnList.Add(integer);
+            }
+            return returnList;
         }
     }
 }

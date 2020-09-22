@@ -16,7 +16,11 @@ namespace Exercises
          */
         public int FindLargest(List<int> integerList)
         {
-            return -1;
+            int largest = Int32.MinValue;
+            foreach (int integer in integerList)
+                largest = integer > largest ? integer : largest;
+            return largest;
+            // return integerList.Max(); // One liner, most languages have something like this so
         }
     }
 }
