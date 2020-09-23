@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercises
 {
@@ -32,13 +29,28 @@ namespace Exercises
          * AnimalGroupName("") -> "unknown"
          * AnimalGroupName("walrus") -> "unknown"
          * AnimalGroupName("Rhino") -> "Crash"
-         * AnimalGroupName("rhino") -> "Crash"
+         * AnimalGroupNamohhe("rhino") -> "Crash"
          * AnimalGroupName("elephants") -> "unknown"
          *
          */
         public string AnimalGroupName(string animalName)
         {
-            return null;
+            animalName = animalName == null ? "" : animalName.ToLower();
+            Console.WriteLine(animalName);
+            Dictionary<string, string> animalGroupNames = new Dictionary<string, string>(10)
+            {
+                {"rhino", "Crash"},
+                {"giraffe", "Tower"},
+                {"elephant", "Herd"},
+                {"lion", "Pride"},
+                {"crow", "Murder"},
+                {"pigeon", "Kit"},
+                {"flamingo", "Pat"},
+                {"deer", "Herd"},
+                {"dog", "Pack"},
+                {"crocodile", "Float"},
+            };
+            return animalGroupNames.ContainsKey(animalName) ? animalGroupNames[animalName] : "unknown";
         }
     }
 }

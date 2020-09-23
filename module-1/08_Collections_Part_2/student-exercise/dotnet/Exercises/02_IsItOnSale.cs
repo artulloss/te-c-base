@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Exercises
 {
@@ -32,7 +28,19 @@ namespace Exercises
          */
         public double IsItOnSale(string itemNumber)
         {
-            return -1.0;
+            itemNumber = itemNumber == null ? "" : itemNumber.ToLower();
+
+            Dictionary<string, double> discounts = new Dictionary<string, double>(6)
+            {
+                {"kitchen4001", 0.2},
+                {"garage1070", 0.15},
+                {"livingroom", 0.10},
+                {"kitchen6073", 0.4},
+                {"bedroom3434", 0.6},
+                {"bath0073", 0.15},
+            };
+
+            return discounts.ContainsKey(itemNumber) ? discounts[itemNumber] : 0.0;
         }
     }
 }

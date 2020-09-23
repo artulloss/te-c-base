@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercises
 {
@@ -18,7 +15,12 @@ namespace Exercises
          */
         public Dictionary<string, string> BeginningAndEnding(string[] words)
         {
-            return null;
+            words = words.Distinct().ToArray();
+            Dictionary<string, string> beginningAndEndDict = new Dictionary<string, string>(words.Length);
+
+            foreach (string word in words)
+                beginningAndEndDict[word[0].ToString()] = word[word.Length - 1].ToString();
+            return beginningAndEndDict;
         }
     }
 }

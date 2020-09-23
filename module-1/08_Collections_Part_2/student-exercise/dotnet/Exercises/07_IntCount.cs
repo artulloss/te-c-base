@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercises
 {
@@ -21,7 +18,10 @@ namespace Exercises
          */
         public Dictionary<int, int> IntCount(int[] ints)
         {
-            return null;
+            Dictionary<int, int> intCount = new Dictionary<int, int>(ints.Distinct().Count());
+            foreach (int integer in ints)
+                intCount[integer] = intCount.ContainsKey(integer) ? intCount[integer] + 1 : 1;
+            return intCount;
         }
     }
 }

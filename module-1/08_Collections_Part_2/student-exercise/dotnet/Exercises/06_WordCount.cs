@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Exercises
 {
@@ -22,7 +18,11 @@ namespace Exercises
          */
         public Dictionary<string, int> WordCount(string[] words)
         {
-            return null;
+            Dictionary<string, int> wordCounts = new Dictionary<string, int>();
+            foreach (var word in words)
+                wordCounts[word] = wordCounts.ContainsKey(word)
+                    ? wordCounts[word] + 1 : 1;
+            return wordCounts;
         }
     }
 }

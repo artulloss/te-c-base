@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercises
 {
@@ -19,7 +16,10 @@ namespace Exercises
          */
         public Dictionary<string, bool> WordMultiple(string[] words)
         {
-            return null;
+            Dictionary<string, bool> wordMultiple = new Dictionary<string, bool>(words.Distinct().Count());
+            foreach (var word in words.Distinct())
+                wordMultiple[word] = words.Count(w => w == word) >= 2; // Lambda and Linq :D
+            return wordMultiple;
         }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercises
 {
@@ -21,7 +18,17 @@ namespace Exercises
         public Dictionary<string, int> ConsolidateInventory(Dictionary<string, int> mainWarehouse,
             Dictionary<string, int> remoteWarehouse)
         {
-            return null;
+            var unionWarehouse = mainWarehouse.Union(remoteWarehouse);
+            Dictionary<string, int> combinedWarehouseList = new Dictionary<string, int>();
+            foreach (KeyValuePair<string, int> keyValue in unionWarehouse)
+            {
+                if (!mainWarehouse.ContainsKey(keyValue.Key))
+                    mainWarehouse[keyValue.Key] = 0;
+                if (!remoteWarehouse.ContainsKey(keyValue.Key))
+                    remoteWarehouse[keyValue.Key] = 0;
+                combinedWarehouseList[keyValue.Key] = mainWarehouse[keyValue.Key] + remoteWarehouse[keyValue.Key];
+            }
+            return combinedWarehouseList;
         }
     }
 }

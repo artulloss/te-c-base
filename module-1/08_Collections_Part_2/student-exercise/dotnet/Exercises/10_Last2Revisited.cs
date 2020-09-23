@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercises
 {
@@ -25,7 +22,23 @@ namespace Exercises
          */
         public Dictionary<string, int> Last2Revisited(string[] words)
         {
-            return null;
+            Dictionary<string, int> resultingDict = new Dictionary<string, int>();
+            foreach (string word in words)
+            {
+                char previousChar = Convert.ToChar(0x0);
+                int count = 0;
+                for(int i = 0; i < word.Length; i++)
+                {
+                    char c = word[i];
+                    if (c == 'x' && c == previousChar && i < word.Length - 1)
+                        count++;
+                    previousChar = c;
+                }
+
+                resultingDict[word] = count;
+            }
+            
+            return resultingDict;
         }
     }
 }

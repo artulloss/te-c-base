@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Exercises
 {
@@ -20,7 +16,13 @@ namespace Exercises
          */
         public Dictionary<string, int> RobPeterToPayPaul(Dictionary<string, int> peterPaul)
         {
-            return null;
+            const int dollar = 100;
+            if (peterPaul["Peter"] > 0 && peterPaul["Paul"] < 10 * dollar)
+            {
+                peterPaul["Peter"] /= 2;
+                peterPaul["Paul"] += peterPaul["Peter"];
+            }
+            return peterPaul;
         }
     }
 }
