@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using BaseballApp.Classes;
 
 namespace BaseballApp
 {
@@ -24,54 +26,42 @@ namespace BaseballApp
 
             /* make sure that the user entered a reasonable number of players and keep asking them if they didn't*/
             Console.WriteLine("Hi, coach! ");
+            
+            BaseballTeam team = new BaseballTeam(getIntInput("How many players are on your team?", MIN_PLAYERS_ON_TEAM, MAX_PLAYERS_ON_TEAM));
 
-            int numPlayers = getIntInput("How many players are on your team?", MIN_PLAYERS_ON_TEAM, MAX_PLAYERS_ON_TEAM);
-
-            string[] playerName = new string[numPlayers];
-            double[] battingAverage = new double[numPlayers];
-
-            for (int i = 0; i < numPlayers; i++)
+            for (int i = 0; i < team.TeamSize; i++)
             {
+                BaseballPlayer bp = new BaseballPlayer();
                 Console.WriteLine("What is the players name?");
-                playerName[i] = Console.ReadLine();
+                bp.Name = Console.ReadLine();
 
-                int atBat = getIntInput("How many times has the player been at bat?", 1, 24);
+                bp.AtBats = getIntInput("How many times has the player been at bat?", 1, 24);
                 /*
                 Console.WriteLine("How many times has the player been at bat?");
                 string strAtBat = Console.ReadLine();
                 double atBat = double.Parse(strAtBat);
                 */
 
-                int timesHit = getIntInput("How many times has the player hit?", 0, atBat); 
+                bp.NumHits = getIntInput("How many times has the player hit?", 0, bp.AtBats); 
                 /*
                 Console.WriteLine("How many times has the player hit?");
                 string strTimesHit = Console.ReadLine();
                 int timesHit = int.Parse(strTimesHit);
                 */
-
-                battingAverage[i] = (double)timesHit / atBat; 
-
+                team.AddPlayer(bp);
             }
 
             //print the name and batting average of each player
-            Console.WriteLine("Player name\tBatting average");
-            for (int i =0; i<numPlayers; i++)
-            {
-                Console.WriteLine(playerName[i] + "\t" + battingAverage[i]);
-            }
-
             //print the player name and batting average of the player with the highest batting average
-            double highestBattingAverage = battingAverage[0];
-            string highestName = playerName[0];
-            for(int i=1; i<numPlayers; i++) //start at one because we're assuming first element is the highest to start
-            {
-                if (battingAverage[i] > highestBattingAverage)
-                {
-                    highestBattingAverage = battingAverage[i];
-                    highestName = playerName[i];
-                }
-            }
-            Console.WriteLine(highestName + " had the best batting average of " + highestBattingAverage);
+
+            BaseballPlayer bestBaseballPlayer = team.getPlayerWithBestBattingAverage();
+            
+            Console.WriteLine("Player name\tBatting average");
+            
+            foreach (BaseballPlayer player in team.Team)
+                Console.WriteLine($"{player.Name}\t{player.BattingAverageString}");
+
+            Console.WriteLine($"{bestBaseballPlayer.Name} had the best batting average of {bestBaseballPlayer.BattingAverage}");
 
             Console.WriteLine("Fun with strings at the end");
             string languages = "C#;Java;javascript";

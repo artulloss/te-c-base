@@ -51,6 +51,7 @@ namespace ClassesExamples.Classes
 
         public override string ToString()
         {
+            uint;
             return IsFaceUp ? $"{FaceValue} of {Suit}" : "Unknown";
         }
     }

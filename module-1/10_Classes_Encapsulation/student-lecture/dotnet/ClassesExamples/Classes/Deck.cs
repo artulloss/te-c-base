@@ -57,7 +57,6 @@ namespace ClassesExamples.Classes
                 bottomHalf.RemoveRange(0, numToTakeFromBottom);
                 Cards.AddRange(takenFromBottom);
             }
-            
         }
         
     }
