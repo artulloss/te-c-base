@@ -24,35 +24,47 @@ namespace InheritanceLecture.Auctioneering
         /// <summary>
         /// All placed bids returned as an array.
         /// </summary>
-        public Bid[] AllBids
-        {
-            get { return allBids.ToArray(); }
-        }
+        public Bid[] AllBids => allBids.ToArray();
 
         /// <summary>
-        /// Indicates if the auction has ended yet.
+        /// Indicates if the auction has ended yet.n
         /// </summary>
-        public bool HasEnded { get; private set; }
+        public bool HasEnded { get; protected set; }
 
         /// <summary>
         /// Places a Bid on the Auction
         /// </summary>
         /// <param name="offeredBid">The bid to place.</param>
         /// <returns>True if the new bid is the current winning bid</returns>
-        public bool PlaceBid(Bid offeredBid)
+        public virtual bool PlaceBid(Bid offeredBid)
         {
+            // Block bidding on a HasEnded auction
+            if (HasEnded) return false;
+            
             // Print out the bid details.
             Console.WriteLine(offeredBid.Bidder + " bid " + offeredBid.BidAmount.ToString("C"));
 
             // Record it as a bid by adding it to allBids
+            
+            allBids.Add(offeredBid);
 
             // Check to see IF the offered bid is higher than the current bid amount
                 // if yes, set offered bid as the current high bid
 
+            bool changed = false;
+
+            if (offeredBid.BidAmount > CurrentHighBid.BidAmount)
+            {
+                CurrentHighBid = offeredBid;
+                changed = true;
+            }
+
             // Output the current high bid
+            
+            Console.WriteLine(CurrentHighBid.BidAmount);
 
             // Return if this is the new highest bid
-            return false;            
+            return changed;            
         }                
     }
 }
