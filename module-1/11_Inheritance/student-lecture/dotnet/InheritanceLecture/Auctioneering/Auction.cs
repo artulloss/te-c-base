@@ -30,6 +30,13 @@ namespace InheritanceLecture.Auctioneering
         /// Indicates if the auction has ended yet.n
         /// </summary>
         public bool HasEnded { get; protected set; }
+        
+        public string ItemAuctioned { get; }
+
+        public Auction(string itemAuctioned)
+        {
+            ItemAuctioned = itemAuctioned;
+        }
 
         /// <summary>
         /// Places a Bid on the Auction

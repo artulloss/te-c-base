@@ -11,7 +11,7 @@ namespace InheritanceLecture
             Console.WriteLine("Starting a general auction");
             Console.WriteLine("-----------------");
 
-            Auction generalAuction = new Auction();
+            Auction generalAuction = new Auction("Pokemon Cards");
             
             Console.WriteLine("Has the auction ended? " + generalAuction.HasEnded);
 
@@ -24,7 +24,7 @@ namespace InheritanceLecture
             // This might go on until the auction runs out of time or hits a max # of bids
             
             Console.WriteLine("*RESERVE AUCTION*");
-            ReserveAuction reserveAuction = new ReserveAuction(50);
+            ReserveAuction reserveAuction = new ReserveAuction("Rare Item", 50);
 
             reserveAuction.PlaceBid(new Bid("Katie", 25));
             Console.WriteLine("Has the auction ended? " + generalAuction.HasEnded);
@@ -32,12 +32,11 @@ namespace InheritanceLecture
 
             Console.WriteLine("*BUYOUT AUCTION*");
 
-            Auction buyoutAuction = new BuyoutAuction();
+            Auction buyoutAuction = new BuyoutAuction("Something", 20);
             buyoutAuction.PlaceBid(new Bid("Josh", 1));
             buyoutAuction.PlaceBid(new Bid("Fonz", 23));
             buyoutAuction.PlaceBid(new Bid("Rick Astley", 13));
             buyoutAuction.PlaceBid(new Bid("Katie", 25));
-            
         }
     }
 }

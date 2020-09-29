@@ -10,8 +10,9 @@ namespace InheritanceLecture.Auctioneering
         /// A buyout auction sets a buyout price that the bidder can use
         /// allowing the auction to end
         /// </summary>
+        /// <param name="itemToBeAuctioned">The item to be auctioned</param>
         /// <param name="buyoutPrice">The max auction price</param>
-        public BuyoutAuction(int buyoutPrice = 500)
+        public BuyoutAuction(string itemToBeAuctioned, int buyoutPrice = 500) : base(itemToBeAuctioned)
         {
             _buyoutPrice = buyoutPrice;
         }

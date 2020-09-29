@@ -4,7 +4,7 @@
     {
         private int _reservePrice;
 
-        public ReserveAuction(int reservePrice)
+        public ReserveAuction(string itemToBeAuctioned, int reservePrice) : base(itemToBeAuctioned)
         {
             _reservePrice = reservePrice;
         }
