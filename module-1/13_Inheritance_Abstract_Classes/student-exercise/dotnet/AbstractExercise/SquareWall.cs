@@ -20,7 +20,6 @@ namespace AbstractExercise
 
         public override string ToString()
         {
-//            Name (SideLengthxSideLength) square
             return $"{Name} ({SideLength}x{SideLength}) square";
         }
     }

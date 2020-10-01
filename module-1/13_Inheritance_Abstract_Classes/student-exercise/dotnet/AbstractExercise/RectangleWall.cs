@@ -18,7 +18,6 @@
 
         public override string ToString()
         {
-            // Name (LengthxHeight) rectangle
             return $"{Name} ({Length}x{Height}) rectangle";
         }
     }

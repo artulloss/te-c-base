@@ -20,6 +20,20 @@ namespace TestableClasses.Classes.Tests
         //.AreNotEquilavent() - Opposite or AreEqualivent
         //.Contains() - Checks to see if collection contains a value/object
 
+        [TestMethod]
+        public void MiddleWayTest()
+        {
+            LoopsAndArrayExercises loopsAndArrayExercises = new LoopsAndArrayExercises();
+            int[] result = loopsAndArrayExercises.MiddleWay(new[] {1, 2, 3}, new[] {4, 5, 6});
+            CollectionAssert.AreEqual(new[] {2, 5}, result);
+        }
+        [TestMethod]
+        public void MaxEnd3Test()
+        {
+            LoopsAndArrayExercises loopsAndArrayExercises = new LoopsAndArrayExercises();
+            int[] result = loopsAndArrayExercises.MaxEnd3(new[] {1, 2, 3});
+            CollectionAssert.AreEqual(new[] {3, 3, 3}, result);
+        }
         
     }
 }

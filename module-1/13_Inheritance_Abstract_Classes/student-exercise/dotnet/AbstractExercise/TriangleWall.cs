@@ -18,7 +18,6 @@
 
         public override string ToString()
         {
-            // Name (BasexHeight) triangle
             return $"{Name} ({Base}x{Height}) triangle";
         }
     }
