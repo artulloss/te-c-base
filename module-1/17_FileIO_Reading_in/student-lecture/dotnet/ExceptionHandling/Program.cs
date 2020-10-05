@@ -11,16 +11,22 @@ namespace ExceptionHandling
     {
         static void Main(string[] args)
         {
-          /* 
-          * By default, when an Exception is thrown, it will "bubble up" through the call stack until
-          * it reaches the main method and then will cause the program to exit and print a stacktrace
-          * to the standard output 
-          * 
-          * By using try/catch blocks, you can stop the Exception from exiting the method and provide
-          * code to handle it. 
-          */
+            //int[] array = {1, 2, 3};
+            //array[5] = 4; // Runtime exception
+
+            //string str = "bla";
+            //int x = int.Parse(str); // System.FormatException
+            
+            /* 
+            * By default, when an Exception is thrown, it will "bubble up" through the call stack until
+            * it reaches the main method and then will cause the program to exit and print a stacktrace
+            * to the standard output 
+            * 
+            * By using try/catch blocks, you can stop the Exception from exiting the method and provide
+            * code to handle it. 
+            */
             Console.WriteLine("The following cities: ");
-            string[] cities = new string[] { "Cleveland", "Columbus", "Cincinatti" };
+            string[] cities = { "Cleveland", "Columbus", "Cincinatti" };
             try
             {
                 Console.WriteLine(cities[0]);
@@ -33,6 +39,7 @@ namespace ExceptionHandling
             {
                 // Flow of control resumes here after the Exception is thrown
                 Console.WriteLine("XXX   Uh-oh, something went wrong...   XXX");
+                Console.WriteLine(e.Message);
             }
 
             Console.WriteLine();
@@ -77,7 +84,17 @@ namespace ExceptionHandling
             }
 
             Console.WriteLine();
-
+            
+            Console.WriteLine("Can I catch multiple exceptions?");
+            try
+            {
+                int[] ar = {1, 2, 3};
+                ar[5] = 10;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Console.WriteLine("Call the Darwin Awards");
+            }
 
             /* 
             * we can throw our own Exceptions in response to exceptional cases 

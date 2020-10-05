@@ -26,9 +26,9 @@ namespace Lecture.Aids
                     // Read the line
                     string line = sr.ReadLine();
                     // Convert to a number
-                    int number = int.Parse(line);
+                    bool worked = int.TryParse(line, out int number);
                     // Add to Sum
-                    sum += number;
+                    if(worked) sum += number;
                 }
             }
             

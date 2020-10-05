@@ -52,7 +52,8 @@ namespace Lecture.Aids
             }
             catch (IOException e) //catch a specific type of Exception
             {
-                Console.WriteLine("Error reading the file");
+                Console.WriteLine(@"Error reading the file
+I am on a new line");
                 Console.WriteLine(e.Message);
             }
 
