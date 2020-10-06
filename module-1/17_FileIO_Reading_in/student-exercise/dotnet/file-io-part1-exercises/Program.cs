@@ -8,15 +8,28 @@ namespace file_io_part1_exercises
     {
         static void Main(string[] args)
         {
+            string path = PromptForPath();
+            List<Question> questions = ParseQuestions(path);
+            PromptQuestions(questions, out int correctQuestions);
+            string answerPlural = correctQuestions == 1 ? "answer" : "answers";
+            Console.WriteLine($"You got {correctQuestions} {answerPlural} correct out of the {questions.Count} questions asked.");
+        }
+
+        private static string PromptForPath()
+        {
             Console.WriteLine("Enter the fully qualified name of the file to read in for quiz questions");
-            string dir = Console.ReadLine() ?? "";
-            if (!File.Exists(dir))
+            string path = Console.ReadLine() ?? "";
+            if (!File.Exists(path))
             {
-                Main(args);
-                return;
+                return PromptForPath();
             }
+            return path;
+        }
+
+        private static List<Question> ParseQuestions(string path)
+        {
             List<Question> questions = new List<Question>();
-            using (StreamReader sr = new StreamReader(dir))
+            using (StreamReader sr = new StreamReader(path))
             {
                 while (!sr.EndOfStream)
                 {
@@ -32,8 +45,13 @@ namespace file_io_part1_exercises
                     }
                     questions.Add(new Question(question, answers));
                 }
+                return questions;
             }
-            int correctQuestions = 0;
+        }
+        
+        private static void PromptQuestions(List<Question> questions, out int correctQuestions)
+        {
+            correctQuestions = 0;
             foreach (var question in questions)
             {
                 bool validOption, outOfBounds;
@@ -54,7 +72,7 @@ namespace file_io_part1_exercises
                     Console.Write("\nYour answer: ");
                     string selectedOptionString = Console.ReadLine();
                     validOption = int.TryParse(selectedOptionString, out selectedOption);
-                    outOfBounds = selectedOption >= answers.Length || selectedOption <= 0;
+                    outOfBounds = selectedOption > answers.Length || selectedOption <= 0;
                     if (outOfBounds)
                     {
                         Console.WriteLine("Please select one of the options via their number.");
@@ -76,7 +94,6 @@ namespace file_io_part1_exercises
                     Console.WriteLine("WRONG!\n");
                 }
             }
-            Console.WriteLine($"You got {correctQuestions} answer(s) correct out of the {questions.Count} questions asked.");
         }
     }
 }

@@ -14,10 +14,9 @@ namespace Lecture.Aids
         */
         public static void WritingAFile()
         {
-
-
-            // After the using statement ends, file has now been written
-            // and closed for further writing
+            string directory = Environment.CurrentDirectory;
+            string fileName = "output";
+            string fullPath = Path.Combine(directory, fileName);
         }
 
 

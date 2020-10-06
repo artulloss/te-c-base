@@ -8,7 +8,7 @@ namespace Lecture.Aids
     {
         public static void ReadFileIn()
         {
-            string folder = Environment.CurrentDirectory;
+            string folder = "../../../";
             string filename = "rick.jpg";
             string fullpath = Path.Combine(folder, filename);
 
