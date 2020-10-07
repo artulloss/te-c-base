@@ -10,7 +10,7 @@ namespace Lecture.Farming
         /// Creates a new horse.
         /// </summary>
         /// <param name="name">The name which the horse goes by.</param>
-        public Horse() : base("HORSE")
+        public Horse(string name, List<string> food) : base(name ,"HORSE", food)
         {
         }
 

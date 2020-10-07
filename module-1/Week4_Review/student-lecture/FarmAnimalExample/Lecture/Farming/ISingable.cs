@@ -8,7 +8,7 @@ namespace Lecture.Farming
     {
         //everything is automatically public 
 
-        string Name { get; }
+        string Type { get; }
 
         /// <summary>
         /// The sound the item makes

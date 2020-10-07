@@ -6,7 +6,7 @@ namespace Lecture.Farming
 {
     public class Snake : FarmAnimal
     {
-        public Snake() : base("SNAKE")
+        public Snake(string name, List<string> food) : base(name, "SNAKE", food)
         { 
         }
 

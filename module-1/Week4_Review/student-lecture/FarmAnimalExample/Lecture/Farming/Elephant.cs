@@ -6,19 +6,13 @@ namespace Lecture.Farming
 {
     public class Elephant : FarmAnimal, ISellable
     {
-        decimal _price;
-        public decimal Price { 
-            get
-            {
-                return _price;
-            }
-       }
+        public decimal Price { get; }
 
         //decimal ISellable.Price => throw new NotImplementedException();
 
-        public Elephant() : base("ELEPHANT")
+        public Elephant(string name, List<string> food) : base(name, "ELEPHANT", food)
         {
-            _price = 5000.50M; 
+            Price = 5000.50M; 
         }
 
         public override string MakeSoundOnce()

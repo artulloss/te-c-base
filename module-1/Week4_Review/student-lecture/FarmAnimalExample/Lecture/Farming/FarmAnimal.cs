@@ -14,15 +14,19 @@ namespace Lecture.Farming
         /// <summary>
         /// The farm animal's name.
         /// </summary>
+        public string Type { get; }
         public string Name { get; }
+        
+        public List<string> Food { get; }
 
         /// <summary>
         /// Creates a new farm animal.
         /// </summary>
-        /// <param name="name">The name which the animal goes by.</param>
-        public FarmAnimal(string name)
+        /// <param name="type">The name which the animal goes by.</param>
+        public FarmAnimal(string name, string type, List<string> food)
         {
-            this.Name = name;
+            Type = type;
+            Food = food;
         }
 
         /// <summary>

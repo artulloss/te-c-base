@@ -67,7 +67,7 @@ namespace FileSplitter
             }
         }
 
-        public delegate bool CheckCondition(string input);
+        private delegate bool CheckCondition(string input);
         
         /// <summary>
         /// Prompts user, Checks the condition on the users input, Displays error message and and reasks until valid

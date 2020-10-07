@@ -8,7 +8,7 @@ namespace Lecture.Farming
     {
         public decimal Price { get; } = 50M;
 
-        public Goat() : base("GOAT")
+        public Goat(string name, List<string> food) : base(name, "GOAT", food)
         {
         }
 

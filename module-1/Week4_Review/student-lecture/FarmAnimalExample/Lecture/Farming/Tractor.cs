@@ -6,7 +6,7 @@ namespace Lecture.Farming
 {
     public class Tractor : ISingable
     {
-        public string Name { get; } = "TRACTOR";
+        public string Type { get; } = "TRACTOR";
 
         public string MakeSoundOnce()
         {
