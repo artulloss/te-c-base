@@ -18,8 +18,10 @@ namespace FileSplitter
             
             string linesOfTextString = PromptInput("How many lines of text (max) should there be in the split files? ",
                 input => int.TryParse(input, out int i) && i > 0, "Please enter a positive number");
-            Console.WriteLine(linesOfTextString);
             int linesOfTextPerFile = int.Parse(linesOfTextString); // We already know its good, no need to test
+            
+            string dir = PromptInput("Enter the directory of the output: ",
+                Directory.Exists, "Directory not found.");
             
             Queue<string> lines = new Queue<string>();
 
@@ -44,7 +46,7 @@ namespace FileSplitter
             string extension = Path.GetExtension(path);
             for(int i = 1; i <= numOfFiles; i++)
             {
-                using (StreamWriter streamWriter = new StreamWriter($"{fileNameWithoutExtension}-{i}{extension}"))
+                using (StreamWriter streamWriter = new StreamWriter($"{dir}{Path.DirectorySeparatorChar}{fileNameWithoutExtension}-{i}{extension}"))
                 {
                     
                     Console.WriteLine($"Generating {fileNameWithoutExtension}-{i}{extension}");

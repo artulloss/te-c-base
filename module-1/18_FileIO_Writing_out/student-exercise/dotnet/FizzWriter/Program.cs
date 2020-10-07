@@ -5,9 +5,10 @@ namespace FizzWriter
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            using (StreamWriter streamWriter = new StreamWriter("FizzBuzz.txt")) // Will put it in dotnet folder if you run the FizzWriter.csproj with dotnet run --project FizzWriter/FizzWriter.csproj
+        static void Main(string[] args) {
+            // Will put it in dotnet folder if you run the FizzWriter.csproj from the
+            // directory with the solution using dotnet run --project FizzWriter/FizzWriter.csproj
+            using (StreamWriter streamWriter = new StreamWriter("FizzBuzz.txt"))
             {
                 for (int i = 1; i <= 300; i++)
                 {
