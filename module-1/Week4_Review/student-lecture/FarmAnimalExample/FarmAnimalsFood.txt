@@ -1,0 +1,4 @@
+Fred|Elephant|Hay,Grains
+George|Horse|Hay, Apples, Carrots
+Harry|Goat|Grass,Wheat,Garbage
+Hermione|Snake|Mice, Rats, Small Dogs

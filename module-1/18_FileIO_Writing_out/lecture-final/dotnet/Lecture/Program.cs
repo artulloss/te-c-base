@@ -30,8 +30,25 @@ namespace Lecture
             ReadingAndWritingFiles.OpenAndWrite();
             BinaryImageManipulator.ReadFileIn();
 
+            FileWrite();
+
             Console.Write("Press enter to finish");
             Console.ReadLine();
+        }
+
+        private static void FileWrite()
+        {
+            string path = Environment.CurrentDirectory;
+            string filename = "oneLastExample.txt";
+            string fullPath = Path.Combine(path, filename);
+
+            using (StreamWriter sw = new StreamWriter(fullPath))
+            {
+                for (int i=0; i<100; i++)
+                {
+                    sw.WriteLine(i);
+                }
+            }
         }
 
         private static void HardCodePath()
