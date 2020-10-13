@@ -90,6 +90,11 @@ GROUP BY governmentform
 HAVING COUNT(code) > 10 -- Having restricts aggregrate functions
 ORDER BY num_countries DESC;
 
+-- average surface area of countries for each continent, round to 2 digits
+SELECT continent, ROUND(AVG(surfacearea), 2) AS avg_surfacearea
+FROM country
+GROUP BY continent
+ORDER BY avg_surfacearea DESC;
 
 -- Most database platforms provide string functions that can be useful for working with string data. In addition to string functions, string concatenation is also usually supported, which allows us to build complete sentences if necessary.
 
@@ -105,3 +110,18 @@ ORDER BY num_countries DESC;
 
 -- Using a GROUP BY with aggregate functions allows us to summarize information for a specific column. For instance, we are able to determine the MIN and MAX population for each countrycode in the city table.
 
+SELECT * FROM country WHERE code = 'USA';
+
+SELECT name, countrycode
+FROM city
+WHERE countrycode IN (SELECT code FROM country WHERE indepyear IS NULL);
+
+SELECT SUM(population) AS population_sum, AVG(population) population_avg, COUNT(*) AS rows FROM city;
+
+SELECT countrycode, MIN(population) AS min_pop, MAX(population) AS max_pop
+FROM city
+GROUP BY countrycode;
+
+SELECT (name + ' is in the state of ' + district) AS city_state
+FROM city
+WHERE countrycode = 'USA';
