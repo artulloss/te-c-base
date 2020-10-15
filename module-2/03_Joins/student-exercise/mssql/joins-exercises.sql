@@ -191,6 +191,8 @@ INNER JOIN address a
   ON s.address_id = a.address_id
 INNER JOIN customer c
   ON c.store_id = s.store_id
+INNER JOIN inventory i
+  ON s.store_id = i.store_id
 INNER JOIN rental r
   ON c.customer_id = r.customer_id
 INNER JOIN payment p
@@ -198,17 +200,7 @@ INNER JOIN payment p
 GROUP BY s.store_id,
          a.address;
 
-SELECT
-  *
-FROM store s
-INNER JOIN address a
-  ON s.address_id = a.address_id
-INNER JOIN customer c
-  ON c.store_id = s.store_id
-INNER JOIN rental r
-  ON c.customer_id = r.customer_id
-INNER JOIN payment p
-  ON c.customer_id = p.customer_id;
+
 
 -- 16. The top ten film titles by number of rentals
 -- (#1 should be “BUCKET BROTHERHOOD” with 34 rentals and #10 should have 31 rentals)
