@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1><em>Referential integrity </em>ensures that relationships between tables remain consistent.
+        We enforce referential integrity and other rules by applying constraints to our tables.
+    </h1>
+
+    <h2>A<em> constraint </em> is associated with a table and defines properties that the column data must comply with. </h2>
+        <h2>Types of Constraints:</h2>
+    <ul>
+        
+        <li>NOT NULL</li>
+        <li>UNIQUE</li>
+        <li>PRIMARY KEY - allowes FKs to establish a relations, enforces NOT NULL and UNIQUE</li>
+        <li>FOREIGN KEY - enforces valid PK values, limits deletion of PK row if FK row exists</li>
+        <li>CHECK - specifides acceptable values that can entered in a column</li>
+        <li>DEFAULT - provides a default value for the column</li>
+    </ul>
+    <h1>When we make multiple INSERT, UPDATE, or DELETE statements and want them to be all or nothing
+        then we would consider it a <em>transaction</em>, or single unit of work. It should be committed on 
+        success or rolled back on failure.
+    </h1>
+    <h2>The <em>ACID Test</em> determines if a series of actions should be in a transaction</h2>
+    <ul>
+        <li>Atomicity - all or nothing</li>
+        <li>Consistency - thnigs are in a consistent state at the end</li>
+        <li>Isolation - concurrent execution of a transaction results as if executed serially. (If you all send me money at the 
+            same time, my balance should be the total).
+        </li>
+        <li>Durability - once a transaction has been committed, there's no going back even after power loss, crash or error.</li>
+    </ul>
+</body>
+
+</html>
+
+<style>
+    h1,
+    h2,
+    h3,
+    li {
+        color: #006bb6;
+        font-weight: normal;
+        padding: 3px 3px 3px 6px;
+        border-left: 3px solid #c6c1b8;
+        background: #f2efe9;
+        width: 60%;
+
+    }
+
+    h2, h3, li {
+        margin-left: 3%;
+    }
+</style>
