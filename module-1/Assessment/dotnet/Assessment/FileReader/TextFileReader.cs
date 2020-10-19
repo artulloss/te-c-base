@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Assessment.FileReader
 {
-    public class CsvFileReader : IFileReader
+    public class TextFileReader : IFileReader
     {
+        public bool HasBeenRead { get; private set; }
         private readonly List<string> _lines = new List<string>();
-        
         public async void ReadFile(string path) {
             try {
                 using (StreamReader streamReader = new StreamReader(path)) { // Async read the lines
