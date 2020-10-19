@@ -18,7 +18,7 @@ VALUES ('Euclidean PI',  'The epic story of Euclid as a pizza delivery boy in an
 --SELECT * FROM film ORDER BY film.film_id DESC;
 -- 3. Hampton Avenue plays Euclid, while Lisa Byway plays his slightly
 -- overprotective mother, in the film, "Euclidean PI". Add them to the film.
-SELECT * FROM film_actor ORDER BY actor_id DESC;
+ --SELECT * FROM film_actor ORDER BY actor_id DESC;
 INSERT INTO film_actor
 VALUES (
   (SELECT a.actor_id FROM actor a WHERE a.first_name + a.last_name = 'HamptonAvenue'),
@@ -42,16 +42,19 @@ WHERE film_id IN (SELECT film_id FROM film WHERE title IN ('Euclidean PI', 'EGG 
 -- 6. Mathmagical films always have a "G" rating, adjust all Mathmagical films
 -- accordingly.
 -- (5 rows affected)
-SELECT * FROM film WHERE film_id IN (SELECT film_id FROM film_category fc INNER JOIN category c ON fc.category_id = c.category_id WHERE c.name = 'Mathmagical');
+--SELECT * FROM film WHERE film_id IN (SELECT film_id FROM film_category fc INNER JOIN category c ON fc.category_id = c.category_id WHERE c.name = 'Mathmagical');
 UPDATE film
 SET rating = 'G'
 WHERE film_id IN (SELECT film_id FROM film_category fc INNER JOIN category c ON fc.category_id = c.category_id WHERE c.name = 'Mathmagical');
-SELECT * FROM film WHERE film_id IN (SELECT film_id FROM film_category fc INNER JOIN category c ON fc.category_id = c.category_id WHERE c.name = 'Mathmagical');
+--SELECT * FROM film WHERE film_id IN (SELECT film_id FROM film_category fc INNER JOIN category c ON fc.category_id = c.category_id WHERE c.name = 'Mathmagical');
 -- 7. Add a copy of "Euclidean PI" to all the stores.
-SELECT * FROM store;
-SELECT * FROM inventory;
-INSERT INTO inventory (film_id, store_id) -- Is there a way to insert for each value?
-VALUES ((SELECT film_id FROM film WHERE title = 'Euclidean PI'), 1), ((SELECT film_id FROM film WHERE title = 'Euclidean PI'), 2)
+--SELECT * FROM store;
+--SELECT * FROM inventory;
+INSERT INTO inventory
+SELECT f.film_id, s.store_id
+FROM film f
+FULL OUTER JOIN store s ON 1 = 1
+WHERE f.title = 'Euclidean PI'
 -- 8. The Feds have stepped in and have impounded all copies of the pirated film,
 -- "Euclidean PI". The film has been seized from all stores, and needs to be
 -- deleted from the film table. Delete "Euclidean PI" from the film table.
@@ -74,15 +77,15 @@ WHERE category_id = (SELECT category_id FROM category WHERE name = 'Mathmagical'
 -- Mathmagical one worked because we removed all references
 -- Euclidean PI failed because we did not remove any of the references
 -- <YOUR ANSWER HERE>
+--SELECT * FROM category;
 BEGIN TRAN;
-SELECT * FROM category;
 DELETE FROM category
 WHERE name = 'Mathmagical';
 DELETE FROM film
 WHERE title = 'Euclidean PI';
-SELECT * FROM category;
+--SELECT * FROM category;
 ROLLBACK TRAN;
-SELECT * FROM category;
+--SELECT * FROM category;
 -- 12. Check database metadata to determine all constraints of the film id, and
 -- describe any remaining adjustments needed before the film "Euclidean PI" can
 -- be removed from the film table.
