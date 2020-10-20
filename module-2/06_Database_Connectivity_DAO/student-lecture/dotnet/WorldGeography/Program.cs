@@ -13,17 +13,18 @@ namespace WorldGeography
     {
         static void Main(string[] args)
         {
-            //IConfigurationBuilder builder = new ConfigurationBuilder()
-            //    .SetBasePath(Directory.GetCurrentDirectory())
-            //    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
             //IConfigurationRoot configuration = builder.Build();
-            //string connectionString = configuration.GetConnectionString("World");
+            IConfigurationRoot config = builder.Build();
+            string connectionString = config.GetConnectionString("World");
 
 
-            ICityDAO cityDAO = null;
-            ICountryDAO countryDAO = null;
-            ILanguageDAO languageDAO = null;
+            ICityDAO cityDAO = new CitySqlDAO(connectionString);
+            ICountryDAO countryDAO = new CountrySqlDAO(connectionString);
+            ILanguageDAO languageDAO = new LanguageSqlDAO(connectionString);
 
             WorldGeographyCLI cli = new WorldGeographyCLI(cityDAO, countryDAO, languageDAO);
             cli.RunCLI();
