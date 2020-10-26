@@ -17,5 +17,14 @@ namespace WorldGeography.DAL
         /// </summary>
         /// <param name="city">The city to add.</param>
         void AddCity(City city);
+        
+        /// <summary>
+        /// Updates a city
+        /// </summary>
+        /// <param name="city"></param>
+        /// <returns>
+        /// The updated city
+        /// </returns>
+        City UpdateCity(City city);
     }
 }

@@ -54,7 +54,8 @@ namespace DataSecurity.Cli.Model
                 connection.Open();
 
                 SqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT password, salt FROM users WHERE username = '" + username + "'";
+                command.CommandText = "SELECT password, salt FROM users WHERE username = @username";
+                command.Parameters.AddWithValue("@username", username);
 
                 SqlDataReader reader = command.ExecuteReader();
 

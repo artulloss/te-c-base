@@ -30,11 +30,7 @@ namespace WorldGeography.Tests
         public void AddCity_Should_IncreaseCountBy1()
         {
             // Arrange
-            City city = new City();
-            city.CountryCode = "USA";
-            city.Name = "Doesn't matter";
-            city.Population = 1;
-            city.District = "Doesn't matter";
+            City city = GetGenericCity();
             CitySqlDAO dao = new CitySqlDAO(ConnectionString);
             int startingRowCount = GetRowCount("city");
 
@@ -44,6 +40,15 @@ namespace WorldGeography.Tests
             // Assert
             int endingRowCount = GetRowCount("city");
             Assert.AreNotEqual(startingRowCount, endingRowCount);
+        }
+
+        private static City GetGenericCity() {
+            City city = new City();
+            city.CountryCode = "USA";
+            city.Name = "Doesn't matter";
+            city.Population = 1;
+            city.District = "Doesn't matter";
+            return city;
         }
 
         [TestMethod]
@@ -64,5 +69,17 @@ namespace WorldGeography.Tests
             // Assert
             // SqlException is expected to be thrown
         }
+
+        [TestMethod]
+        public void UpdateCityTests() {
+            CitySqlDAO sqlDao = new CitySqlDAO(ConnectionString);
+            IList<City> cities = sqlDao.GetCitiesByCountryCode("USA");
+            City cityToUpdate = cities[0];
+            City city = GetGenericCity();
+            
+            
+
+        }
+        
     }
 }

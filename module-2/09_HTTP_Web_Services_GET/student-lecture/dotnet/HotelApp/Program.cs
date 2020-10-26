@@ -40,29 +40,31 @@ namespace HTTP_Web_Services_GET_lecture
                 {
                     Console.WriteLine("Invalid input. Only input a number.");
                 }
-                else if (menuSelection == 1)
-                {
-                    Console.WriteLine("Not implemented");
+                else if (menuSelection == 1) {
+                    List<Hotel> hotels = GetHotels();
+                    PrintHotels(hotels);
                 }
                 else if (menuSelection == 2)
                 {
-                    Console.WriteLine("Not implemented");
+                    PrintReviews(GetReviews());
                 }
                 else if (menuSelection == 3)
                 {
-                    Console.WriteLine("Not implemented");
+                    PrintHotel(GetHotelById(1));
                 }
-                else if (menuSelection == 4)
-                {
-                    Console.WriteLine("Not implemented");
+                else if (menuSelection == 4) {
+                    PrintReviews(GetReviews(1));
                 }
                 else if (menuSelection == 5)
                 {
-                    Console.WriteLine("Not implemented");
+                    PrintHotels(GetHotelsByRating(3));
                 }
-                else if (menuSelection == 6)
-                {
-                    Console.WriteLine("Not implemented - Create a custom Web API query here");
+                else if (menuSelection == 6) {
+                    City city = GetCityFromPublicAPI();
+                    PrintCity(city);
+                }
+                else if (menuSelection == 7) {
+                    Console.WriteLine(GetCatFact());
                 }
                 else
                 {
@@ -72,12 +74,48 @@ namespace HTTP_Web_Services_GET_lecture
             }
         }
 
-
         //API methods:
 
+        private static List<Hotel> GetHotels() {
+            RestRequest request = new RestRequest(API_URL + "hotels");
+            IRestResponse<List<Hotel>> response = client.Get<List<Hotel>>(request);
+            return response.Data;
+        }
 
+        private static Hotel GetHotelById(int id) {
+            RestRequest request = new RestRequest(API_URL + "hotels/" + id);
+            return client.Get<Hotel>(request).Data;
+        }
 
+        private static List<Hotel> GetHotelsByRating(int stars) {
+            RestRequest request = new RestRequest($"{API_URL}hotels?stars={stars}");
+            IRestResponse<List<Hotel>> response = client.Get<List<Hotel>>(request);
+            return response.Data;
+        }
 
+        private static List<Review> GetReviews(int hotelId = 0) {
+            string url = hotelId > 0 ? $"{API_URL}reviews?hotelID={hotelId}" : API_URL + "reviews";
+            RestRequest request = new RestRequest(url);
+            IRestResponse<List<Review>> response = client.Get<List<Review>>(request);
+            return response.Data;
+        }
+
+        private static City GetCityFromPublicAPI() {
+            RestRequest request = new RestRequest("https://api.teleport.org/api/cities/geonameid:4508722/");
+            IRestResponse<City> response = client.Get<City>(request);
+            return response.Data;
+        }
+        
+        private static string GetCatFact() {
+            RestRequest request = new RestRequest("https://catfact.ninja/fact");
+            IRestResponse<Cat> response = client.Get<Cat>(request);
+            return response.Data.Fact;
+        }
+
+        private class Cat
+        {
+            public string Fact { get; set; }
+        }
 
         //Print methods:
 

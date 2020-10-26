@@ -49,6 +49,11 @@ namespace WorldGeography.DAL
             }
         }
 
+        public City UpdateCity(City city) {
+            // TODO IMPLEMENT
+            return city;
+        }
+
         public IList<City> GetCitiesByCountryCode(string countryCode)
         {
             List<City> cities = new List<City>();
