@@ -47,12 +47,6 @@ namespace AuctionApp
             }
         }
 
-        public bool IsValid
-        {
-            get
-            {
-                return Title != null && Description != null && User != null && CurrentBid != 0;
-            }
-        }
+        public bool IsValid => Title != null && Description != null && User != null && CurrentBid != 0;
     }
 }

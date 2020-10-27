@@ -1,6 +1,7 @@
 ﻿using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace AuctionApp
@@ -19,97 +20,77 @@ namespace AuctionApp
             client = restClient;
         }
 
-        public List<Auction> GetAllAuctions()
-        {
-            RestRequest request = new RestRequest(API_URL);
-            IRestResponse<List<Auction>> response = client.Get<List<Auction>>(request);
-            if (response.ResponseStatus != ResponseStatus.Completed)
+        private T GetRequest<T>(string endpoint) where T : new() {
+            RestRequest request = new RestRequest(endpoint);
+            IRestResponse<T> response = client.Get<T>(request);
+            return (T) RequestWasSuccessful(response.ResponseStatus, response.StatusCode, response.IsSuccessful, response.Data);
+        }
+        
+        private T PutRequest<T>(string endpoint, object body) where T : new() {
+            RestRequest request = new RestRequest(endpoint);
+            request.AddJsonBody(body);
+            IRestResponse<T> response = client.Put<T>(request);
+            return (T) RequestWasSuccessful(response.ResponseStatus, response.StatusCode, response.IsSuccessful, response.Data);
+        }
+        
+        private T PostRequest<T>(string endpoint, object body) where T : new() {
+            RestRequest request = new RestRequest(endpoint);
+            request.AddJsonBody(body);
+            IRestResponse<T> response = client.Post<T>(request);
+            return (T) RequestWasSuccessful(response.ResponseStatus, response.StatusCode, response.IsSuccessful, response.Data);
+        }
+        
+        private bool DeleteRequest(string endpoint){
+            RestRequest request = new RestRequest(endpoint);
+            IRestResponse response = client.Delete(request);
+            return response.IsSuccessful && response.ResponseStatus == ResponseStatus.Completed;
+        }
+
+
+        private object RequestWasSuccessful(ResponseStatus responseStatus, HttpStatusCode statusCode, bool isSuccessful, object data) {
+            if (responseStatus != ResponseStatus.Completed)
             {
                 Console.WriteLine("Error occurred - unable to reach server.");
             }
-            else if (!response.IsSuccessful)
+            else if (!isSuccessful)
             {
-                Console.WriteLine("Error occurred - received non-success response: " + (int)response.StatusCode);
+                Console.WriteLine("Error occurred - received non-success response: " + (int) statusCode);
             }
             else
             {
-                return response.Data;
+                return data;
             }
             return null;
         }
+        
+        public List<Auction> GetAllAuctions() {
+            return GetRequest<List<Auction>>(API_URL);
+        }
 
-        public Auction GetDetailsForAuction(int auctionId)
-        {
-            RestRequest requestOne = new RestRequest(API_URL + "/" + auctionId);
-            IRestResponse<Auction> response = client.Get<Auction>(requestOne);
-            if (response.ResponseStatus != ResponseStatus.Completed)
-            {
-                Console.WriteLine("Error occurred - unable to reach server.");
-            }
-            else if (!response.IsSuccessful)
-            {
-                Console.WriteLine("Error occurred - received non-success response: " + (int)response.StatusCode);
-            }
-            else
-            {
-                return response.Data;
-            }
-            return null;
+        public Auction GetDetailsForAuction(int auctionId) {
+            return GetRequest<Auction>(API_URL + "/" + auctionId);
         }
 
         public List<Auction> GetAuctionsSearchTitle(string searchTitle)
         {
-            RestRequest request = new RestRequest(API_URL + "?title_like=" + searchTitle);
-            IRestResponse<List<Auction>> response = client.Get<List<Auction>>(request);
-            if (response.ResponseStatus != ResponseStatus.Completed)
-            {
-                Console.WriteLine("Error occurred - unable to reach server.");
-            }
-            else if (!response.IsSuccessful)
-            {
-                Console.WriteLine("Error occurred - received non-success response: " + (int)response.StatusCode);
-            }
-            else
-            {
-                return response.Data;
-            }
-            return null;
+            return GetRequest<List<Auction>>(API_URL + "?title_like=" + searchTitle);
         }
 
         public List<Auction> GetAuctionsSearchPrice(double searchPrice)
         {
-            RestRequest request = new RestRequest(API_URL + "?currentBid_lte=" + searchPrice);
-            IRestResponse<List<Auction>> response = client.Get<List<Auction>>(request);
-            if (response.ResponseStatus != ResponseStatus.Completed)
-            {
-                Console.WriteLine("Error occurred - unable to reach server.");
-            }
-            else if (!response.IsSuccessful)
-            {
-                Console.WriteLine("Error occurred - received non-success response: " + (int)response.StatusCode);
-            }
-            else
-            {
-                return response.Data;
-            }
-            return null;
+            return GetRequest<List<Auction>>(API_URL + "?currentBid_lte=" + searchPrice);
         }
 
         public Auction AddAuction(Auction newAuction) {
-            // place code here
-            throw new NotImplementedException();
+            return PostRequest<Auction>(API_URL, newAuction);
         }
 
-        public Auction UpdateAuction(Auction auctionToUpdate)
-        {
-            // place code here
-            throw new NotImplementedException();
+        public Auction UpdateAuction(Auction auctionToUpdate) {
+            return PutRequest<Auction>(API_URL + $"/{auctionToUpdate.Id}", auctionToUpdate);
         }
 
-        public bool DeleteAuction(int auctionId)
-        {
-            // place code here
-            throw new NotImplementedException();
+        public bool DeleteAuction(int auctionId) {
+            return DeleteRequest(API_URL + $"/{auctionId}");
         }
     }
 }
