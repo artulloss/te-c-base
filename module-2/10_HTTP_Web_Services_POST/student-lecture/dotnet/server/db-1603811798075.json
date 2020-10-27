@@ -115,6 +115,14 @@
   ],
   "reservations": [
     {
+      "Id": 701,
+      "HotelId": 1,
+      "fullName": "John Smith",
+      "checkinDate": "10/10/2022",
+      "checkoutDate": "10/12/2022",
+      "guests": 2
+    },
+    {
       "Id": 702,
       "HotelId": 1,
       "fullName": "Sam Smith",

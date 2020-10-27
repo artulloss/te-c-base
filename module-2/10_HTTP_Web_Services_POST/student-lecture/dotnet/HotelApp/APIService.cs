@@ -6,7 +6,7 @@ namespace HTTP_Web_Services_POST_PUT_DELETE_lecture
 {
     class APIService
     {
-        private readonly string API_URL = "";
+        private readonly string API_URL;
         private readonly RestClient client = new RestClient();
 
         public APIService(string api_url)
@@ -79,17 +79,40 @@ namespace HTTP_Web_Services_POST_PUT_DELETE_lecture
 
         public Reservation AddReservation(Reservation newReservation)
         {
-            throw new NotImplementedException();
+            RestRequest request = new RestRequest(API_URL + "reservations");
+            request.AddJsonBody(newReservation); // This will automatically serialize it
+            IRestResponse<Reservation> response = client.Post<Reservation>(request);
+            return CheckForErrors(response);
+        }
+
+        private Reservation CheckForErrors(IRestResponse<Reservation> response) {
+            if (response.ResponseStatus != ResponseStatus.Completed) {
+                Console.WriteLine("Error - unable to reach server");
+            } else if (!response.IsSuccessful) {
+                Console.WriteLine("Error - not successful. Response: " + response.StatusCode);
+            } else {
+                return response.Data;
+            }
+            return null;
         }
 
         public Reservation UpdateReservation(Reservation reservationToUpdate)
         {
-            throw new NotImplementedException();
+            RestRequest request = new RestRequest(API_URL + "reservations");
+            request.AddJsonBody(reservationToUpdate);
+            IRestResponse<Reservation> response = client.Put<Reservation>(request);
+            return CheckForErrors(response);
         }
-
-        public void DeleteReservation(int reservationId)
+        
+        public async void DeleteReservation(int reservationId)
         {
-            throw new NotImplementedException();
+            RestRequest request = new RestRequest(API_URL + "reservations/" + reservationId);
+            try {
+                await client.DeleteAsync<Reservation>(request); // Lets not freeze the program here.
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+            }
         }
     }
 }
