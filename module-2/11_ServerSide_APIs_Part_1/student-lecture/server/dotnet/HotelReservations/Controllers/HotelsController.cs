@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using HotelReservations.Models;
 using HotelReservations.Dao;
@@ -10,12 +11,10 @@ namespace HotelReservations.Controllers
     public class HotelsController : ControllerBase
     {
         private static IHotelDao _hotelDao;
-        private static IReservationDao _reservationDao;
-
+        
         public HotelsController()
         {
             _hotelDao = new HotelDao();
-            _reservationDao = new ReservationDao();
         }
 
         [HttpGet("hotels")]
@@ -27,17 +26,12 @@ namespace HotelReservations.Controllers
         [HttpGet("hotels/{id}")]
         public Hotel GetHotel(int id)
         {
-            Hotel hotel = _hotelDao.Get(id);
-
-            if (hotel != null)
-            {
-                return hotel;
-            }
-
-            return null;
+            return _hotelDao.Get(id);
         }
 
-
-
+        [HttpGet("filter")]
+        public List<Hotel> FilterByCityState(string state, string city) {
+            return _hotelDao.List().Where(h => h.Address.State == state && city == null || h.Address.City == city).ToList();
+        }
     }
 }
