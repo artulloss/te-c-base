@@ -6,7 +6,7 @@ namespace HTTP_Web_Services_POST_PUT_DELETE_lecture
 {
     class APIService
     {
-        private readonly string API_URL = "https://localhost:44322/";
+        private readonly string API_URL = "https://localhost:5001/";
         private readonly RestClient client = new RestClient();
 
         public List<Hotel> GetHotels()

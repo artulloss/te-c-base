@@ -106,5 +106,18 @@ namespace HotelReservations.Controllers
             return Created($"/reservations/{added.Id}", added);
         }
 
+        [HttpPut("reservations/{id}")]
+        public ActionResult<Reservation> UpdateReservation(int id, Reservation reservation) { 
+            return reservationDao.Get(id) != null
+                ? (ActionResult) Ok(reservationDao.Update(id, reservation))
+                : NotFound("Reservation not found");
+        }
+
+        [HttpDelete("reservations/{id}")]
+        public ActionResult DeleteReservation(int id) {
+            return reservationDao.Delete(id) ? (ActionResult) Ok() : NotFound("Reservation Not Found");
+        }
+
+
     }
 }
