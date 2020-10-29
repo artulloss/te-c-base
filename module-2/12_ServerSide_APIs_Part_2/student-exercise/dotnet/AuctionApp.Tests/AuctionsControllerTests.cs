@@ -25,7 +25,7 @@ namespace AuctionApp.Tests
         [TestMethod]
         public async Task CreateAuction_ExpectCreated()
         {
-            Auction input = new Auction() { Id = null, Title = "Dragon Plush", Description = "Not a real dragon", User = "Bernice", CurrentBid = 19.50 };
+            Auction input = new Auction { Id = null, Title = "Dragon Plush", Description = "Not a real dragon", User = "Bernice", CurrentBid = 19.50 };
 
             var response = await _client.PostAsJsonAsync("auctions", input);
 
