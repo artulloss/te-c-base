@@ -6,20 +6,18 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AuctionApp.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class AuctionsController : ControllerBase
     {
         private readonly IAuctionDao _dao;
 
-        public AuctionsController(IAuctionDao auctionDao = null)
-        {
-            if (auctionDao == null)
-                _dao = new AuctionDao();
-            else
-                _dao = auctionDao;
+        public AuctionsController(IAuctionDao auctionDao = null) {
+            _dao = auctionDao ?? new AuctionDao();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public List<Auction> List(string title_like = "", double currentBid_lte = 0)
         {
@@ -43,12 +41,10 @@ namespace AuctionApp.Controllers
             {
                 return Ok(auction);
             }
-            else
-            {
-                return NotFound();
-            }
+            return NotFound();
         }
 
+        [Authorize(Roles = "creator,admin")]
         [HttpPost]
         public ActionResult<Auction> Create(Auction auction)
         {
@@ -56,6 +52,7 @@ namespace AuctionApp.Controllers
             return Created($"/auctions/{returnAuction.Id}", returnAuction);
         }
 
+        [Authorize(Roles = "creator,admin")]
         [HttpPut("{id}")]
         public ActionResult<Auction> Update(int id, Auction auction)
         {
@@ -69,6 +66,7 @@ namespace AuctionApp.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
@@ -83,16 +81,13 @@ namespace AuctionApp.Controllers
             {
                 return NoContent();
             }
-            else
-            {
-                return BadRequest();
-            }
+            return BadRequest();
         }
 
         [HttpGet("whoami")]
         public ActionResult WhoAmI()
         {
-            return Ok("");
+            return Ok(User.Identity.Name);
         }
     }
 }

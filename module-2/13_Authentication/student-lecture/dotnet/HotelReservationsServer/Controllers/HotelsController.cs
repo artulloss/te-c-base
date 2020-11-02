@@ -31,7 +31,7 @@ namespace HotelReservations.Controllers
         [HttpGet("hotels")]
         public List<Hotel> ListHotels()
         {
-            return _hotelDao.List();d
+            return _hotelDao.List();
         }
 
         [HttpGet("hotels/{id}")]

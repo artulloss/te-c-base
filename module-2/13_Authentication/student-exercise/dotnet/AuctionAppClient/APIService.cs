@@ -2,21 +2,22 @@
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace AuctionApp
 {
     public class APIService
     {
-        private readonly static string API_BASE_URL = "https://localhost:44390/";
-        private readonly static string AUCTIONS_URL = API_BASE_URL + "auctions";
+        private static readonly string API_BASE_URL = "https://localhost:44390/";
+        private static readonly string AUCTIONS_URL = API_BASE_URL + "auctions";
         private readonly IRestClient client;
         private static API_User user = new API_User();
 
-        public bool LoggedIn { get { return !string.IsNullOrWhiteSpace(user.Token); } }
+        public bool LoggedIn => !string.IsNullOrWhiteSpace(user.Token);
 
-        public string UNAUTHORIZED_MSG { get { return "Authorization is required for this endpoint. Please log in."; } }
-        public string FORBIDDEN_MSG { get { return "You do not have permission to perform the requested action"; } }
-        public string OTHER_4XX_MSG { get { return "Error occurred - received non-success response: "; } }
+        public string UNAUTHORIZED_MSG => "Authorization is required for this endpoint. Please log in.";
+        public string FORBIDDEN_MSG => "You do not have permission to perform the requested action";
+        public string OTHER_4XX_MSG => "Error occurred - received non-success response: ";
 
 
         public APIService()
@@ -147,25 +148,36 @@ namespace AuctionApp
             {
                 return "Error occurred - unable to reach server.";
             }
-            else if (!response.IsSuccessful)
-            {
-                return OTHER_4XX_MSG + (int)response.StatusCode;
+            if (!response.IsSuccessful) {
+                switch (response.StatusCode) {
+                    case HttpStatusCode.Unauthorized:
+                        return UNAUTHORIZED_MSG;
+                    case HttpStatusCode.Forbidden:
+                        return FORBIDDEN_MSG;
+                    default:
+                        return OTHER_4XX_MSG + (int)response.StatusCode;
+                }
             }
             return "";
         }
 
-        public API_User Login(string submittedName, string submittedPass)
-        {
+        public API_User Login(string submittedName, string submittedPass) {
+            var credentials = new { // Anonymous object with login info
+                username = submittedName,
+                password = submittedPass
+            };
+            
+            RestRequest request = new RestRequest(API_BASE_URL + "login");
+            request.AddJsonBody(credentials);
 
-
-            IRestResponse<API_User> response = null;
+            IRestResponse<API_User> response = client.Post<API_User>(request);
 
             if (response.ResponseStatus != ResponseStatus.Completed)
             {
                 Console.WriteLine("An error occurred communicating with the server.");
                 return null;
             }
-            else if (!response.IsSuccessful)
+            if (!response.IsSuccessful)
             {
                 if (!string.IsNullOrWhiteSpace(response.Data.Message))
                 {
@@ -177,12 +189,8 @@ namespace AuctionApp
                 }
                 return null;
             }
-            else
-            {
-                user.Token = response.Data.Token;
-
-                return response.Data;
-            }
+            user.Token = response.Data.Token;
+            return response.Data;
         }
 
         public void Logout()
