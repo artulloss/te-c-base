@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HotelReservations.Controllers
 {
+    [Authorize]
     [Route("/")]
     [ApiController]
     public class HotelsController : ControllerBase
@@ -26,10 +27,11 @@ namespace HotelReservations.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("hotels")]
         public List<Hotel> ListHotels()
         {
-            return _hotelDao.List();
+            return _hotelDao.List();d
         }
 
         [HttpGet("hotels/{id}")]

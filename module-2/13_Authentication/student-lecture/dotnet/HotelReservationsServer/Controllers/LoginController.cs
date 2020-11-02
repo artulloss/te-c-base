@@ -36,7 +36,7 @@ namespace HotelReservations.Controllers
                 string token = tokenGenerator.GenerateToken(user.Id, user.Username, user.Role);
 
                 // Create a ReturnUser object to return to the client
-                ReturnUser retUser = new ReturnUser() { Id = user.Id, Username = user.Username, Role = user.Role, Token = token };
+                ReturnUser retUser = new ReturnUser { Id = user.Id, Username = user.Username, Role = user.Role, Token = token };
 
                 // Switch to 200 OK
                 result = Ok(retUser);

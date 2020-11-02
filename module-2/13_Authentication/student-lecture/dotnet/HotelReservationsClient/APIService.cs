@@ -160,7 +160,7 @@ namespace HotelReservationsClient
             else
             {
                 user.Token = response.Data.Token;
-
+                client.Authenticator = new JwtAuthenticator(user.To);
                 return true;
             }
         }
