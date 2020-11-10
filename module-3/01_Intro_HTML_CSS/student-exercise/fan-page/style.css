@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  scrollbar-width: none; /* Hide scrollbar firefox */
+  background: radial-gradient(
+    circle,
+    rgba(232, 234, 246, 0.9504844173997724) 45%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar chromium */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pfp {
+  width: 20rem;
+}
+
+.link {
+  display: inline;
+}
+
+.links-list {
+  list-style-type: none;
+  text-align: center;
+}
+
+.hover-img:hover {
+  transform: scale(1.1);
+}
+
+.hover-img {
+  transition: transform 0.25;
+}
