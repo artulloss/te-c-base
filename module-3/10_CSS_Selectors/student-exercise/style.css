@@ -1,3 +1,10 @@
+:root {
+  --blue: #00adee;
+  --blue-border: rgba(0, 173, 238, 0.4);
+  --green: #8cc36f;
+  --green-border: rgba(170, 239, 135, 0.8);
+}
+
 * {
   box-sizing: border-box;
   font-family: Tahoma, Verdana, Segoe, sans-serif;
@@ -14,4 +21,81 @@ body {
 ul {
   margin: 0;
   padding: 0;
+}
+
+aside {
+  position: fixed;
+  height: 100vh;
+  width: 200px;
+  border: 1px solid var(--blue-border);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+aside img {
+  display: block;
+  height: 120px;
+  margin: 0 auto;
+}
+
+aside nav ul li {
+  list-style: none;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 10px auto;
+  padding-bottom: 10px;
+  width: 80%;
+  line-height: 2;
+}
+
+aside nav ul li a {
+  font-weight: bold;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+aside nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  margin-left: 200px;
+  padding: 0px 20px;
+}
+
+header {
+  height: 120px;
+}
+
+header img {
+  height: 80%;
+}
+
+.banner {
+  display: block;
+  width: 100%;
+}
+
+section div {
+  display: inline-block;
+  width: 33%;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
+/* Extra credit ? lol */
+section div:not(:first-child) {
+  padding-left: 20px;
+}
+
+section div:not(:last-child) {
+  border-right: 1px solid var(--green);
+}
+
+section h2 {
+  color: var(--green);
+}
+
+section h2 i {
+  margin-right: 10px;
 }
