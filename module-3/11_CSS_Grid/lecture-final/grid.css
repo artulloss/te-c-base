@@ -1,0 +1,43 @@
+div.container {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-areas: 
+     "header header header"
+     "menu-nav main upcoming-events"
+     "footer footer footer"
+     ;
+     height: 100vh;
+     grid-gap: 10px;
+}
+
+div.container > header {
+    grid-area: header;
+}
+
+div.container > nav#menu-nav {
+    grid-area: menu-nav;
+}
+
+div.container > main {
+    grid-area: main;
+}
+
+div.container > aside#upcoming-events {
+   grid-area: upcoming-events;
+}
+
+div.container > footer {
+    grid-area: footer;
+}
+
+@media only screen and (max-width: 768px) {
+    div.container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "header"
+        "menu-nav"
+        "main"
+        "upcoming-events"
+        "footer";
+    }
+}
