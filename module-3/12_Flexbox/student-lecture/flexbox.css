@@ -1,0 +1,52 @@
+body,
+#hero footer,
+#featured section,
+#featured section article div {
+  display: flex;
+}
+
+body,
+#all-items sections {
+  flex-direction: column;
+}
+
+body {
+  align-items: center;
+}
+
+/* Center icons */
+#featured section article div {
+  justify-content: center;
+}
+
+/* Center articles in menu items */
+#featured section article {
+  justify-content: center;
+}
+
+/* Center vertically */
+#hero footer,
+#all-items section article {
+  align-items: center;
+}
+
+#hero footer {
+  justify-content: space-between;
+}
+
+#all-items article div:last-child {
+  flex-basis: 80%;
+}
+
+#all-items article:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 700px) {
+  #all-items section article {
+    flex-wrap: wrap;
+  }
+  #featured section article:nth-child(even) {
+    border: none;
+  }
+}
