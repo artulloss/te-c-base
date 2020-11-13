@@ -1,11 +1,12 @@
 body {
   margin: 20px;
-  padding: 0
+  padding: 0;
 }
 
 header {
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   padding: 20px;
+  display: flex;
 }
 
 .logo {
@@ -19,12 +20,13 @@ ul {
 }
 
 li {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 20px;
   text-transform: uppercase;
   color: #707070;
   padding: 0 20px 0 0;
   margin-left: 20px;
+  display: inline;
 }
 
 li a,
@@ -34,11 +36,13 @@ li a:visited {
 }
 
 li a:hover {
-  color: #00AFEF;
+  color: #00afef;
   text-decoration: underline;
 }
 
-.spacer {}
+.spacer {
+  flex: 1;
+}
 
 .my-account img {
   width: 32px;
