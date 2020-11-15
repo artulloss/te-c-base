@@ -3,11 +3,27 @@ body {
   padding: 0;
   min-height: 100vh;
   /* Photo by Andre Furtado on Unsplash */
-  background: url(../img/andre-furtado-JtV6zyOZSrA-unsplash.jpg) left / cover no-repeat;
+  background: url(../img/andre-furtado-JtV6zyOZSrA-unsplash.jpg) left / cover
+    no-repeat;
+  display: flex;
+  justify-content: flex-start;
 }
 
 #left-panel {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
+  flex-direction: column;
+  flex-basis: 33%;
+}
+
+#right-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#right-panel div {
+  width: 80%;
 }
 
 ul.social-icons {
@@ -16,15 +32,16 @@ ul.social-icons {
   padding: 0;
 }
 
-nav {}
-
-#right-panel {}
+footer ul {
+  display: flex;
+  justify-content: space-around;
+}
 
 /* YOU WON'T NEED TO CHANGE ANY STYLES BELOW THIS LINE */
 
 h1,
 h2 {
-  font-family: 'Kalam', cursive;
+  font-family: "Kalam", cursive;
   margin: 0;
   text-align: center;
 }
@@ -40,11 +57,11 @@ h2 {
 }
 
 header {
-  background-color: #F2CC65;
+  background-color: #f2cc65;
 }
 
 p {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 300;
   font-size: 1.1rem;
   line-height: 2.1rem;
@@ -58,12 +75,12 @@ nav ul {
 }
 
 nav ul li {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 2rem;
   font-weight: 400;
   text-transform: uppercase;
   border-bottom: 1px solid #707070;
-  padding-top: 30px
+  padding-top: 30px;
 }
 
 nav a,
@@ -73,29 +90,30 @@ nav a:visited {
 }
 
 nav a:hover {
-  color: #F2CC65;
+  color: #f2cc65;
   padding-left: 5px;
+  transition: 0.3s;
 }
 
 .fab {
-  color: #3A3B00
+  color: #3a3b00;
 }
 
 .social-icons li a:hover .fab {
-  color: #F2CC65
+  color: #f2cc65;
+  transition: 0.3s;
 }
 
 #welcome {
-  background-color: #F2CC65;
-  font-family: 'Kalam', cursive;
+  background-color: #f2cc65;
+  font-family: "Kalam", cursive;
   text-align: center;
   font-size: 5rem;
   padding: 20px;
   border-radius: 10px;
 }
 
-@media(max-width: 1024px) {
-
+@media (max-width: 1024px) {
   h1,
   #welcome {
     font-size: 3rem;
@@ -110,7 +128,7 @@ nav a:hover {
   }
 }
 
-@media(max-width: 425px) {
+@media (max-width: 425px) {
   #left-panel {
     flex-basis: 100%;
   }
