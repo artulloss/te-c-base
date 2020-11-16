@@ -13,9 +13,11 @@
         }
 */
 function sumDouble(x, y) {
-	// do logic here
-	// return result;
-	return x + y;
+  // Normal function because it was already provided, from here on using arrow functions :P
+  if (x === y) {
+    return (x + y) * 2;
+  }
+  return x + y;
 }
 /*
 2. **hasTeen** We'll say that a number is "teen" if it is in the range 13..19 inclusive. 
@@ -25,7 +27,21 @@ function sumDouble(x, y) {
 		hasTeen(20, 19, 10) → true
 		hasTeen(20, 10, 13) → true
 */
-
+const hasTeen = (...params) => {
+  const results = params.map((val) => {
+    return val >= 13 && val <= 19;
+  });
+  return results.includes(true);
+};
+/* 3 parameter solution :p
+const hasTeen = (x, y, z) => {
+	params = [x, y, z];
+	const results = params.map((val) => {
+	  return val >= 13 && val <= 19;
+	});
+	return results.includes(true);
+  };
+*/
 /* 
 3. **lastDigit** Given two non-negative int values, return true if they have the same 
     last digit, such as with 27 and 57.
@@ -34,6 +50,10 @@ function sumDouble(x, y) {
 		lastDigit(6, 17) → false
 		lastDigit(3, 113) → true
 */
+
+const lastDigit = (x, y) => {
+  return x % 10 == y % 10;
+};
 
 /*
 4. **seeColor** Given a string, if the string begins with "red" or "blue" return that color 
@@ -44,6 +64,16 @@ function sumDouble(x, y) {
         seeColor("blueTimes") → "blue"
 */
 
+const seeColor = (str) => {
+  if (str.startsWith("red")) {
+    return "red";
+  }
+  if (str.startsWith("blue")) {
+    return "blue";
+  }
+  return "";
+};
+
 /*
 5. **oddOnly** Write a function that given an array of integer of any length, filters out 
     the even number, and returns a new array of just the the odd numbers.
@@ -51,6 +81,10 @@ function sumDouble(x, y) {
 		oddOnly([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) → [1, 3, 5, 7, 9, 11];
 		oddOnly([2, 4, 8, 32, 256]); → []
 */
+
+const oddOnly = (ar) => {
+  return ar.filter((v) => v % 2 === 1);
+};
 
 /*
 6. **frontAgain** Given a string, return true if the first 2 chars in the string also appear 
@@ -60,6 +94,13 @@ function sumDouble(x, y) {
 		frontAgain("edit") → false
 		frontAgain("ed") → true
 */
+
+const frontAgain = (str) => {
+  return (
+    str.charAt(0) === str.charAt(str.length - 2) &&
+    str.charAt(1) === str.charAt(str.length - 1)
+  );
+};
 
 /*
 7. **cigarParty** When squirrels get together for a party, they like to have cigars. 
@@ -73,6 +114,10 @@ or false otherwise.
 		cigarParty(70, true) → true
 */
 
+const cigarParty = (numCigars, isWeekend) => {
+  return isWeekend ? numCigars >= 40 : numCigars >= 40 && numCigars <= 60;
+};
+
 /*
 8. **fizzBuzz** Because you know you can't live without it, FizzBuzz.
 
@@ -83,6 +128,20 @@ or false otherwise.
 		fizzBuzz(8) → 8
 */
 
+const fizzBuzz = (x) => {
+  let str = "";
+  let isFizzBuzz = false;
+  if (x % 3 === 0) {
+    str += "Fizz";
+    isFizzBuzz = true;
+  }
+  if (x % 5 === 0) {
+    str += "Buzz";
+    isFizzBuzz = true;
+  }
+  return isFizzBuzz ? str : x;
+};
+
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
 
@@ -92,6 +151,10 @@ or false otherwise.
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
 
+const filterEvens = (ar) => {
+  return ar.filter((v) => v % 2 === 0);
+};
+
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
 
@@ -100,6 +163,10 @@ or false otherwise.
 	filterBigNumbers([]) → []
 */
 
+const filterBigNumbers = (ar) => {
+  return ar.filter((v) => v >= 100);
+};
+
 /*
 11. **filterMultiplesOfX** Write a function to filter numbers that are a multiple of a 
 parameter, `x` passed in.
@@ -107,6 +174,10 @@ parameter, `x` passed in.
 	filterMultiplesOfX([3, 5, 1, 9, 18, 21, 42, 67], 3) → [3, 9, 18, 21, 42]
 	filterMultiplesOfX([3, 5, 10, 20, 18, 21, 42, 67], 5) → [5, 10, 20]
 */
+
+const filterMultiplesOfX = (ar, x) => {
+  return ar.filter((v) => v % x === 0);
+};
 
 /*
 12. **createObject** Write a function that creates an object with a property called 
@@ -120,3 +191,11 @@ firstName, lastName, and age. Populate the properties with your values.
 		age
 	}
 */
+
+const createObject = () => {
+  return {
+    firstName: "Adam",
+    lastName: "Tulloss",
+    age: 18,
+  };
+};

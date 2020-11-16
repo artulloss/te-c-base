@@ -69,8 +69,8 @@ function objects() {
       "Peter Gibbons",
       "Milton Waddams",
       "Samir Nagheenanajar",
-      "Michael Bolton"
-    ]
+      "Michael Bolton",
+    ],
   };
 
   // Log the object
