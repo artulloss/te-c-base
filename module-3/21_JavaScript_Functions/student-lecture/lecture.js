@@ -1,7 +1,7 @@
 /**
  * All named functions will have the function keyword and
  * a name followed by parentheses.
- * 
+ *
  * @returns {number} 1
  */
 function returnOne() {
@@ -21,12 +21,17 @@ function printToConsole(value) {
 }
 
 /**
- * Write a function called multiplyTogether that multiplies two numbers together. But 
+ * Write a function called multiplyTogether that multiplies two numbers together. But
  * what happens if we don't pass a value in? What happens if the value is not a number?
  *
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
+
+const multiplyTogether = (...params) => {
+  if (params.length < 2) return NaN; // multiplyTogether().should.be.NaN; multiplyTogether(9).should.be.NaN;
+  return params.reduce((a, v) => a * v);
+};
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -39,15 +44,13 @@ function printToConsole(value) {
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
 
-
- 
 /**
  * Functions can return earlier before the end of the function. This could be useful
  * in circumstances where you may not need to perform additional instructions or have to
  * handle a particular situation.
  * In this example, if the firstParameter is equal to 0, we return secondParameter times 2.
  * Observe what's printed to the console in both situations.
- * 
+ *
  * @param {number} firstParameter the first parameter
  * @param {number} secondParameter the second parameter
  */
@@ -87,7 +90,12 @@ function scopeTest() {
   }
 }
 
-function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
+function createSentenceFromUser(
+  name,
+  age,
+  listOfQuirks = [],
+  separator = ", "
+) {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
 }
@@ -100,7 +108,7 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce((a, v) => a + v);
 }
 
 /**
@@ -111,4 +119,30 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) {
+  return numbersToFilter.filter((v) => v % 3 === 0);
+}
+
+function allDivisibleByThreeVariableFunction(numbersToFilter) {
+  //return numbersToFilter.filter((v) => v % 3 === 0);
+  let fun = function (v) {
+    return v % 3 === 0;
+  };
+  return numbersToFilter.filter(fun);
+}
+
+function allDivisibleByThreeNonArrow(numbersToFilter) {
+  //return numbersToFilter.filter((v) => v % 3 === 0);
+  return numbersToFilter.filter(function (v) {
+    return v % 3 === 0;
+  });
+}
+
+/**
+ * Average numbers
+ * @param  {...number} numbers
+ */
+const average = (...numbers) => {
+  const len = numbers.length;
+  return numbers.reduce((a, v) => a + v) / len;
+};
