@@ -225,7 +225,9 @@ export default {
   },
   methods: {
     saveUser() {
-      console.log("CALLED");
+      this.newUser.id =
+        this.users.reduce((acc, user) => (acc < user.id ? user.id : acc), 0) +
+        1;
       this.users.push(this.newUser);
       this.clearUser();
     },
