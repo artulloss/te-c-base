@@ -19,13 +19,13 @@
       </div>
       <div class="form-element">
         <label for="rating">Rating:</label>
-        <select id="rating" v-model.number="newReview.rating">
-          <option value="1">1 Star</option>
-          <option value="2">2 Stars</option>
-          <option value="3">3 Stars</option>
-          <option value="4">4 Stars</option>
-          <option value="5">5 Stars</option>
-        </select>
+        <input
+          id="rating"
+          v-model.number="newReview.rating"
+          type="number"
+          min="1"
+          max="5"
+        />
       </div>
       <div class="form-element">
         <label for="review">Review:</label>

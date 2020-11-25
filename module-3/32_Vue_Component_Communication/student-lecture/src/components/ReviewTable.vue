@@ -1,8 +1,63 @@
-<template></template>
+<template>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Reviewer</th>
+        <th>Review</th>
+        <th>Rating</th>
+        <th>Favorited</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(review, index) in filteredReviews" :key="index">
+        <td>{{ review.title }}</td>
+        <td>{{ review.reviewer }}</td>
+        <td>{{ review.review }}</td>
+        <td class="stars">
+          <img
+            src="../assets/star.png"
+            v-bind:title="review.rating + ' Star Review'"
+            class="star"
+            width="20px"
+            v-for="n in review.rating"
+            v-bind:key="n"
+          />
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            v-bind:checked="review.favorited"
+            v-on:change="onFavoritedChange(review)"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>
 
 <script>
+import ReviewDisplay from "./ReviewDisplay";
+
 export default {
-  name: "review-table"
+  name: "review-table",
+  components: {
+    ReviewDisplay,
+  },
+  computed: {
+    filteredReviews() {
+      const reviewsFilter = this.$store.state.filter;
+      const reviews = this.$store.state.reviews;
+      return reviews.filter((review) => {
+        return reviewsFilter === 0 ? true : reviewsFilter === review.rating;
+      });
+    },
+  },
+  methods: {
+    onFavoritedChange(review) {
+      this.$store.commit("FLIP_FAVORITED", review);
+    },
+  },
 };
 </script>
 
