@@ -14,17 +14,17 @@ import ReviewDisplay from "./ReviewDisplay";
 export default {
   name: "review-list",
   components: {
-    ReviewDisplay
+    ReviewDisplay,
   },
   computed: {
     filteredReviews() {
-      const reviewsFilter = -1;
-      const reviews = [];
-      return reviews.filter(review => {
+      const reviewsFilter = this.$state.filter;
+      const reviews = this.$state.reviews;
+      return reviews.filter((review) => {
         return reviewsFilter === 0 ? true : reviewsFilter === review.rating;
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
