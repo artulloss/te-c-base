@@ -106,7 +106,7 @@ export default {
     };
   },
   computed: {
-    // This should be called filteredList - lists aren't a thing in js and it's not descriptive
+    // This should be called filteredUsers - lists aren't a thing in js and it's not descriptive
     filteredList() {
       const compare = (string, compare) =>
         compare === "" || string.toLowerCase().includes(compare.toLowerCase());
