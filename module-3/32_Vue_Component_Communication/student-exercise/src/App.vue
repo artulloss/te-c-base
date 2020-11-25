@@ -1,24 +1,27 @@
 <template>
   <div id="app">
     <h1>Reading List</h1>
+    <new-book-form />
     <reading-list />
   </div>
 </template>
 
 <script>
-import ReadingList from './components/ReadingList.vue';
+import ReadingList from "./components/ReadingList";
+import NewBookForm from "./components/NewBookForm";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    ReadingList
-  }
-}
+    ReadingList,
+    NewBookForm,
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
