@@ -18,8 +18,8 @@ export default {
   },
   computed: {
     filteredReviews() {
-      const reviewsFilter = this.$state.filter;
-      const reviews = this.$state.reviews;
+      const reviewsFilter = this.$store.state.filter;
+      const reviews = this.$store.state.reviews;
       return reviews.filter((review) => {
         return reviewsFilter === 0 ? true : reviewsFilter === review.rating;
       });
