@@ -67,13 +67,6 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <!--
-            If the user status = 'Active', the button text displays 'Disable.'
-            If the user status = 'Disabled', the button text displays 'Enable.'
-            When you click the button, it calls a method flipStatus() and change the user's status from 'Active' to 'Disabled', or 'Disabled' to 'Active.'
-            The flipStatus(id) method takes the user ID as an argument.
-            You can use the user ID to find the user in the users array and change their status.
-            -->
             <button class="btnEnableDisable" v-on:click="flipStatus(user.id)">
               {{ flipStatusString(user.status, true) }}
             </button>
@@ -107,23 +100,6 @@
     >
       Add New User
     </button>
-
-    <!-- The form should be hidden by default.
-    Use a property called showForm.
-    Toggle showForm with v-on.
-    Use v-show to show/hide form appropriately.
-    Each form field should be bound to the correct property in the newUser object.
-    Create a saveUser method that adds a new user to the users array when the form is submitted.
-    Clear the form after the user is saved. -->
-
-    <!-- 
-    id: 1,
-    firstName: "John",
-    lastName: "Smith",
-    username: "jsmith",
-    emailAddress: "jsmith@gmail.com",
-    status: "Active",
-    -->
 
     <form v-on:submit.prevent="saveUser" id="frmAddNewUser" v-show="showForm">
       <div class="field">
