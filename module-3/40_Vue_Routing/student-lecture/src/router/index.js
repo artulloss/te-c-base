@@ -1,16 +1,33 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Products from "@/views/Products";
+import ProductDetail from "@/views/ProductDetail";
+import AddReview from "@/views/AddReview";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
-
-]
+  {
+    path: "/",
+    name: "products",
+    component: Products,
+  },
+  {
+    path: "/products/:id",
+    name: "product-detail",
+    component: ProductDetail,
+  },
+  {
+    path: "/products/:id/add-review",
+    name: "add-review",
+    component: AddReview,
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
