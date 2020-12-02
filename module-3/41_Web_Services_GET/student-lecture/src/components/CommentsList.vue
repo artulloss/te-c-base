@@ -1,10 +1,11 @@
 <template>
-  <div></div>
+  <div>{{ comments }}</div>
 </template>
 
 <script>
 export default {
-  name: "comments-list"
+  name: "comments-list",
+  props: "comments",
 };
 </script>
 

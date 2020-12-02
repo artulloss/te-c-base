@@ -3,8 +3,15 @@
     <h1>{{ product.name }}</h1>
     <p class="description">{{ product.description }}</p>
     <div class="actions">
-      <router-link v-bind:to="{name: 'products'}">Back to Products</router-link> &nbsp;|
-      <router-link v-bind:to="{name: 'add-review', params: {id: product.id}}"> Add Review </router-link>
+      <router-link v-bind:to="{ name: 'products' }"
+        >Back to Products</router-link
+      >
+      &nbsp;|
+      <router-link
+        v-bind:to="{ name: 'add-review', params: { id: product.id } }"
+      >
+        Add Review
+      </router-link>
     </div>
     <div class="well-display">
       <average-summary />
@@ -47,5 +54,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
