@@ -1,16 +1,16 @@
 <template>
   <div class="messages">
-    <topic-details v-bind:topic-id="$route.params.id" />
+    <topic-details v-bind:topic-id="Number($route.params.id)" />
   </div>
 </template>
 
 <script>
-import TopicDetails from '@/components/TopicDetails.vue';
+import TopicDetails from "@/components/TopicDetails.vue";
 
 export default {
-  name: 'Messages',
+  name: "Messages",
   components: {
-    TopicDetails
-  }
-}
+    TopicDetails,
+  },
+};
 </script>
