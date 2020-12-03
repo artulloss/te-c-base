@@ -1,25 +1,24 @@
-import axios from 'axios';
+import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "http://localhost:3000",
 });
 
 export default {
-
   getBoards() {
-    return http.get('/boards');
+    return http.get("/boards");
   },
 
   getCards(boardID) {
-    return http.get(`/boards/${boardID}`)
+    return http.get(`/boards/${boardID}`);
   },
 
   getCard(cardID) {
-    return http.get(`/cards/${cardID}`)
+    return http.get(`/cards/${cardID}`);
   },
 
   addCard(card) {
-    return http.post('/cards', card);
+    return http.post("/cards", card);
   },
 
   updateCard(card) {
@@ -28,6 +27,13 @@ export default {
 
   deleteCard(cardID) {
     return http.delete(`/cards/${cardID}`);
-  }
+  },
 
-}
+  addBoard(board) {
+    return http.post("/boards", board);
+  },
+
+  deleteBoard(boardId) {
+    return http.post(`/boards/${boardId}`);
+  },
+};

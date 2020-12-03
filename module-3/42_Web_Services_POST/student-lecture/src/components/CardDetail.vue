@@ -8,16 +8,24 @@
       <p>{{ card.description }}</p>
       <router-link
         tag="button"
-        :to="{ name: 'EditCard', params: {cardID: $route.params.cardID} }"
+        :to="{ name: 'EditCard', params: { cardID: $route.params.cardID } }"
         class="btn editCard"
-      >Edit Card</router-link>
-      <button class="btn deleteCard" v-on:click="deleteCard">Delete Card</button>
-      <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
+        >Edit Card</router-link
+      >
+      <button class="btn deleteCard" v-on:click="deleteCard">
+        Delete Card
+      </button>
+      <div class="status-message error" v-show="errorMsg !== ''">
+        {{ errorMsg }}
+      </div>
       <comments-list :comments="card.comments" />
     </div>
 
     <div class="board-actions" v-if="!isLoading">
-      <router-link :to="{ name: 'Board', params: { id: $route.params.boardID } }">Back to Board</router-link>
+      <router-link
+        :to="{ name: 'Board', params: { id: $route.params.boardID } }"
+        >Back to Board</router-link
+      >
     </div>
   </div>
 </template>
@@ -29,7 +37,7 @@ import CommentsList from "@/components/CommentsList";
 export default {
   name: "card-detail",
   components: {
-    CommentsList
+    CommentsList,
   },
   data() {
     return {
@@ -41,11 +49,11 @@ export default {
     retrieveCard() {
       boardsService
         .getCard(this.$route.params.cardID)
-        .then(response => {
+        .then((response) => {
           this.$store.commit("SET_CURRENT_CARD", response.data);
           this.isLoading = false;
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response && error.response.status === 404) {
             alert(
               "Card not available. This card may have been deleted or you have entered an invalid card ID."
@@ -62,13 +70,13 @@ export default {
       ) {
         boardsService
           .deleteCard(this.card.id)
-          .then(response => {
+          .then((response) => {
             if (response.status === 200) {
               alert("Card successfully deleted");
               this.$router.push(`/board/${this.card.boardId}`);
             }
           })
-          .catch(error => {
+          .catch((error) => {
             if (error.response) {
               this.errorMsg =
                 "Error deleting card. Response received was '" +
@@ -91,8 +99,8 @@ export default {
   computed: {
     card() {
       return this.$store.state.card;
-    }
-  }
+    },
+  },
 };
 </script>
 
