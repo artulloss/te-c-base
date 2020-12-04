@@ -23,20 +23,28 @@ export default {
   data() {
     return {
       message: {
-        id: Math.floor(Math.random() * (1000 - 100) + 100),
+        id: Math.floor(Math.random() * (1000 - 100) + 100), // bruh
         topicId: this.topicId,
         title: "",
-        messageText: ""
-      }
+        messageText: "",
+      },
     };
   },
   methods: {
     saveMessage() {
-
-    }
-  }
+      messageService
+        .createMessage(this.message)
+        .then((res) => {
+          if (res.status === 201) {
+            this.$router.push(`/${this.message.topicId}`);
+          }
+        })
+        .catch((err) => {
+          alert(`Error occured: ${err.message}`);
+        });
+    },
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>

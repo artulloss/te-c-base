@@ -2,9 +2,13 @@
   <div class="topic-details">
     <h1>{{ this.$store.state.activeTopic.title }}</h1>
     <router-link
-      :to="{ name: 'AddMessage', params: {topicId: $store.state.activeTopic.id} }"
+      :to="{
+        name: 'AddMessage',
+        params: { topicId: $store.state.activeTopic.id },
+      }"
       class="addMessage"
-    >Add New Message</router-link>
+      >Add New Message</router-link
+    >
     <div
       v-for="message in this.$store.state.activeTopic.messages"
       v-bind:key="message.id"
@@ -13,11 +17,20 @@
       <h3 class="message-title">{{ message.title }}</h3>
       <p class="message-body">{{ message.messageText }}</p>
       <router-link
-        :to="{name: 'EditMessage', params: {topicId: $store.state.activeTopic.id, messageId: message.id} }"
+        :to="{
+          name: 'EditMessage',
+          params: {
+            topicId: $store.state.activeTopic.id,
+            messageId: message.id,
+          },
+        }"
         tag="button"
         class="btnEditMessage"
-      >Edit</router-link>
-      <button class="btnDeleteMessage" v-on:click="deleteMessage(message.id)">Delete</button>
+        >Edit</router-link
+      >
+      <button class="btnDeleteMessage" v-on:click="deleteMessage(message.id)">
+        Delete
+      </button>
     </div>
   </div>
 </template>
@@ -29,23 +42,34 @@ import messageService from "@/services/MessageService.js";
 export default {
   name: "topic-details",
   props: {
-    topicId: Number
+    topicId: Number,
   },
   methods: {
-    deleteMessage(id) {}
+    deleteMessage(id) {
+      messageService
+        .deleteMessage(id)
+        .then((res) => {
+          if (res.status === 200) {
+            this.$store.commit("DELETE_MESSAGE", id);
+          }
+        })
+        .catch((err) => {
+          alert(`Error occured: ${err.message}`);
+        });
+    },
   },
   created() {
     topicService
       .get(this.topicId)
-      .then(response => {
+      .then((response) => {
         this.$store.commit("SET_ACTIVE_TOPIC", response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status == 404) {
           this.$router.push("/not-found");
         }
       });
-  }
+  },
 };
 </script>
 

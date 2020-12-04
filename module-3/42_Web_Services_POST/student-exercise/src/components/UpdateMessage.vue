@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       title: "",
-      messageText: ""
+      messageText: "",
     };
   },
   methods: {
@@ -32,27 +32,35 @@ export default {
         id: this.messageId,
         topicId: this.topicId,
         title: this.title,
-        messageText: this.messageText
+        messageText: this.messageText,
       };
-      // call update in message service
-    }
+      messageService
+        .updateMessage(message.id, message)
+        .then((res) => {
+          if (res.status === 200) {
+            this.$router.push(`/${message.topicId}`);
+          }
+        })
+        .catch((err) => {
+          alert(`Error occured: ${err.message}`);
+        });
+    },
   },
   created() {
     messageService
       .get(this.messageId)
-      .then(response => {
+      .then((response) => {
         this.$store.commit("SET_ACTIVE_MESSAGE", response.data);
         this.title = response.data.title;
         this.messageText = response.data.messageText;
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status == 404) {
           this.$router.push("/not-found");
         }
       });
-  }
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>
